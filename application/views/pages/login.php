@@ -20,6 +20,7 @@
 
 <body>
     <div class="container">
+        <h2>Login</h2>
         <form action="<?php echo base_url('index.php/Login/auth') ?>" method="POST" class="form-horizontal">
             <div class="form-group">
                 <label for="Email" class="col-sm-2 control-label">Email</label>
@@ -43,7 +44,7 @@
             <h5 id="inputError" class="sr-only" for="warning" style="color: red">Email/Password salah, Silahkan coba lagi</h5>
             <div class="modal-footer">
                 <button type="submit" name="submit" class="btn btn-primary">Login</button>
-                <a href="" class="btn btn-warning">Register</a>
+                <a href="<?= base_url('index.php/Register') ?>" class="btn btn-warning">Register</a>
             </div>
             <?php echo $this->session->flashdata('msg'); ?>
         </form>

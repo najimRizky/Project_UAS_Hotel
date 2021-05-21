@@ -18,14 +18,15 @@ class User extends CI_Model{
         return $role;
     }
 
-    public function register($email, $password, $nama, $alamat, $notelp){
+    public function register($nama, $email, $password, $tgllahir, $notelp, $foto){
         $data = array(
+            'Nama' => "$nama",
             'Email' => "$email",
             'Password' => "$password",
-            'Nama' => "$nama",
-            'Alamat' => "$alamat",
-            'NoTelepon' => "$notelp",
-            'Role' => 1
+            'Tanggal_lahir' => "$tgllahir",
+            'Nomor_telepon' => "$notelp",
+            'Foto' => "$foto",
+            'Role' => "user"
         );
     
         $this->db->insert('user', $data);
