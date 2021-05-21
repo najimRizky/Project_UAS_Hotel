@@ -55,9 +55,11 @@ class Admin extends CI_Controller{
     }
 
     function img_size($value, $row){
-        $tes = base_url('/assets/uploads/');
-        // return "<img src='$tes$row->Id_Hotel/$value' width='100px'> </img>";
-        return "$tes$row->Nama_hotel/$value";
+        $base = base_url('/assets/uploads/hotel');
+        $nama = $row->Nama_hotel;
+        $kota = $row->Kota;
+        return "<img src='$base/$kota/$nama/$value' width='100px'> </img>";
+        // return "$base/$kota/$nama/$value";
     }
 }
 ?>
