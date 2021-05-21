@@ -5,6 +5,7 @@ class Admin extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->library('grocery_CRUD');
+        $this->load->model('Hotel');
     }
 
     public function index(){
@@ -20,7 +21,8 @@ class Admin extends CI_Controller{
              ->callback_edit_field('Lokasi', array($this, 'edit_lokasi'))
              ->callback_add_field('Lokasi', array($this, 'edit_lokasi'))
              ->callback_edit_field('Bintang', array($this, 'edit_bintang'))
-             ->callback_edit_field('Id_hotel', array($this, 'edit_id'));
+             ->callback_edit_field('Id_hotel', array($this, 'edit_id'))
+             ->callback_column('Gambar', array($this, 'img_size'));
 
         $output = $crud->render();
         $data['crud'] = get_object_vars($output);
@@ -52,6 +54,10 @@ class Admin extends CI_Controller{
         return "<input value='$value' disabled/>";
     }
 
-
+    function img_size($value, $row){
+        $tes = base_url('/assets/uploads/');
+        // return "<img src='$tes$row->Id_Hotel/$value' width='100px'> </img>";
+        return "$tes$row->Nama_hotel/$value";
+    }
 }
 ?>
