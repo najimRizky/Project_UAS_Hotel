@@ -10,5 +10,7 @@
 <body>
     <?= $nav ?>
     <h1>Ini Home</h1>
+
+    <?= $footer ?>
 </body>
 </html>
