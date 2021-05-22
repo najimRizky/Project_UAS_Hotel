@@ -29,9 +29,6 @@
       <!--Grid column-->
     </div>
     <!--Grid row-->
-  </div>
-  <!-- Grid container -->
-
   <div class="row justify-content-center">
     <div class="col-md-4 col-12">
       <div class="text-center mb-1">
@@ -60,6 +57,9 @@
       </div>
     </div>
   </div>
+  </div>
+  <!-- Grid container -->
+
   <hr style="color: white; border-color:white;">
   <div  class="text-center pb-3" >
     © 2021 Copyright:
