@@ -23,6 +23,8 @@ class Base extends CI_Controller {
 
 	public function detail($id){
 		$data['hotels'] = $this->hotel->getSpesificHotel($id);
+		$data['facilities'] = $this->hotel->getFacilities($id);
+
 		$data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
