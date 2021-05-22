@@ -11,7 +11,8 @@ class Base extends CI_Controller {
         $data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
-		$data['randomHotel'] = $this->hotel->getRandomHotel();
+		$hotel['randomHotel'] = $this->hotel->getRandomHotel();
+		$data['carrousel'] = $this->load->view('components/carrouselHotel',$hotel,TRUE);
 		$this->load->view('pages/home', $data);
 	}
 }
