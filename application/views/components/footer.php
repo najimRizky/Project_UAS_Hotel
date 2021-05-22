@@ -32,14 +32,33 @@
   </div>
   <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center" style="font-size: 12px;">
-    <i class="fab fa-instagram m-1"></i>
-    <i class="fab fa-github m-1"></i>
-    <i class="fab fa-twitter m-1"></i>
-    <i class="fab fa-google m-1"></i>
-    <i class="fab fa-linkedin m-1"></i>
-    <i class="fab fa-youtube m-1"></i>
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-12">
+      <div class="text-center mb-1">
+        Our Partners:
+      </div>
+      <div class="text-center">
+        <i class="fab fa-google-pay mx-1"></i>
+        <i class="fab fa-cc-visa mx-1"></i>
+        <i class="fab fa-tripadvisor mx-1"></i>
+        <i class="fab fa-paypal mx-1"></i>
+        <i class="fab fa-amazon-pay mx-1"></i>
+        <i class="fab fa-cc-mastercard mx-1"></i>
+      </div>  
+    </div>
+    <div class="col-md-4 col-12">
+      <div class="text-center mb-1">
+        Find us on:
+      </div>
+      <div class="text-center" >
+        <i class="fab fa-instagram m-1"></i>
+        <i class="fab fa-github m-1"></i>
+        <i class="fab fa-twitter m-1"></i>
+        <i class="fab fa-google m-1"></i>
+        <i class="fab fa-linkedin m-1"></i>
+        <i class="fab fa-youtube m-1"></i>
+      </div>
+    </div>
   </div>
   <hr style="color: white; border-color:white;">
   <div  class="text-center pb-3" >
