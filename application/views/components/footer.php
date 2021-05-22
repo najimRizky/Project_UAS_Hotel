@@ -5,7 +5,7 @@
     <div class="row">
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Isi FOOTER</h5>
+        <h5 class="text-uppercase">Tentang Kami</h5>
         <p style="padding-right: 20px">
           Website ini dibuat untuk memenuhi nilai Ujian Akhir Semester 4 dari kelar Pemograman Website di kelas IF430-F. Website ini dibuat oleh satu kelompok yang terdiri dari 4 orang yaitu: Najim Rizky, Bonaventura Sanjaya, Filbert Khouwira, Mohamad Farhan
         </p>
@@ -14,7 +14,7 @@
 
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">LIBRARY</h5>
+        <h5 class="text-uppercase">Library Website</h5>
             <div class="item">Bootstrap 4.6</div>
             <div class="item">Jquery</div>
             <div class="item">Codeigniter</div>
@@ -33,7 +33,16 @@
   <!-- Grid container -->
 
   <!-- Copyright -->
-  <div  class="text-center p-3" style="background-color: #000000; color:white">
+  <div class="text-center" style="font-size: 12px;">
+    <i class="fab fa-instagram m-1"></i>
+    <i class="fab fa-github m-1"></i>
+    <i class="fab fa-twitter m-1"></i>
+    <i class="fab fa-google m-1"></i>
+    <i class="fab fa-linkedin m-1"></i>
+    <i class="fab fa-youtube m-1"></i>
+  </div>
+  <hr style="color: white; border-color:white;">
+  <div  class="text-center pb-3" >
     © 2021 Copyright:
     <a class="text-dark" href="#">namahotel</a>
   </div>
