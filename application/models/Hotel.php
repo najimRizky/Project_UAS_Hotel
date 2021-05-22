@@ -12,5 +12,10 @@ class Hotel extends CI_Model{
 		$query = $this->db->query("SELECT * FROM `hotel` WHERE `Id_hotel` = '$id'");
 		return $query->result_array();
 	}
+
+	public function getRandomHotel(){
+		$query = $this->db->query("SELECT * FROM hotel ORDER BY RAND() LIMIT 5;");
+		return $query->result_array();
+	}
 }
 ?>
