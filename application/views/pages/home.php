@@ -17,8 +17,9 @@
                 <?= $carrousel ?>
             </div>
         </div>
+        
+            <?= $showHotel; ?>
     </div>
-
     <?= $footer ?>
 </body>
 
