@@ -23,7 +23,9 @@
         <div class="card">
             <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/1.jpeg') ?>" class="card-img-top" alt="...">
             <div class="card-body p-2">
-                <h5 class="card-title" style="margin-bottom: 0;"><?= $item['Nama_hotel'] ?></h5>
+                <a href="<?= base_url('index.php/base/detail/'.$item['Id_hotel']) ?>" style="color: rgba(0,0,0,0.8);">
+                    <h5 class="card-title" style="margin-bottom: 0;"><?= $item['Nama_hotel'] ?></h5>
+                </a>
                 <?php for ($i = 0; $i < $item['Bintang']; $i++) { ?>
                     <i class="fas fa-star" style="color: #fcba03; font-size: 10px;"></i>
                 <?php } ?>
