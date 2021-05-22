@@ -12,7 +12,7 @@ class Base extends CI_Controller {
 		$data['carrousel'] = $this->load->view('components/carrouselHotel',$randomHotel,TRUE);
 		
 		$hotel['hotels'] = $this->hotel->getAllHotel();
-		$data['carrousel'] = $this->load->view('components/showHotel',$hotel,TRUE);
+		$data['showHotel'] = $this->load->view('components/showHotel',$hotel,TRUE);
 
         
 		$data['style'] = $this->load->view('include/ui',NULL, TRUE);
