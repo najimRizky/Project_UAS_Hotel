@@ -18,6 +18,7 @@ class Admin extends CI_Controller{
         $crud->set_table('hotel')
              ->columns('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang','Harga', 'Jumlah_kamar', 'Gambar')
              ->fields('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang','Harga', 'Jumlah_kamar', 'Gambar')
+             ->unset_clone()
              ->callback_edit_field('Lokasi', array($this, 'edit_lokasi'))
              ->callback_add_field('Lokasi', array($this, 'edit_lokasi'))
              ->callback_edit_field('Bintang', array($this, 'edit_bintang'))
