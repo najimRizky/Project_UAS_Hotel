@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= $style ?>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Form</title>
     <script>
         $(document).ready(function() {
@@ -28,6 +29,7 @@
                     format: 'yyyy/mm/dd',
                     minDate: minimumDate
                 });
+                document.getElementById('Tanggal_checkout').disabled = false;
             });
         });
 
@@ -61,11 +63,11 @@
                 </div>
                 <div class="col form-group">
                     <label for="Tanggal_checkin">Tanggal check-in</label>
-                    <input class="form-control" id="Tanggal_checkin" name="Tanggal_checkin" placeholder="YYYY/MM/DD" required>
+                    <input class="form-control" readonly id="Tanggal_checkin" name="Tanggal_checkin" placeholder="YYYY/MM/DD" required>
                 </div>
                 <div class="col form-group">
                     <label for="Tanggal_checkout">Tanggal check-out</label>
-                    <input class="form-control" id="Tanggal_checkout" name="Tanggal_checkout" placeholder="YYYY/MM/DD" required>
+                    <input class="form-control" readonly id="Tanggal_checkout" disabled name="Tanggal_checkout" placeholder="YYYY/MM/DD" required>
                 </div>
                 
             </div>
