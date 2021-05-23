@@ -19,35 +19,39 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Login</h2>
-        <form action="<?php echo base_url('index.php/Login/auth') ?>" method="POST" class="form-horizontal">
-            <div class="form-group">
-                <label for="Email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="Email" name="email" placeholder="Enter Email">
+    <?= $nav ?>
+    <div id="main">
+        <div class="container mb-2" id="content" style=" padding: 5px 200px 0px 200px; ">
+            <h2>Login</h2>
+            <form action="<?php echo base_url('index.php/Login/auth') ?>" method="POST" class="form-horizontal">
+                <div class="form-group">
+                    <label for="Email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="Email" name="email" placeholder="Enter Email">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="Password" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="Password" name="password" placeholder="Enter Password">
+                <div class="form-group">
+                    <label for="Password" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="Password" name="password" placeholder="Enter Password">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <p id="image_captcha"><?php echo $captchaImg; ?></p>
-                <div class="col-sm-10">
-                    <a href="javascript:void(0);" class="captcha-refresh"><i class="fas fa-sync" aria-hidden="true"></i></a>
-                    <input type="text" name="captcha" placeholder="Enter the Captcha above">
+                <div class="form-group">
+                    <p class="ml-3" id="image_captcha"><?php echo $captchaImg; ?></p>
+                    <div class="col-sm-10">
+                        <input type="text"  name="captcha" placeholder="Enter the Captcha above">
+                        <a href="javascript:void(0);" class="captcha-refresh btn btn-primary"><i class="fas fa-sync" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-            </div>
-            <h5 id="inputError" class="sr-only" for="warning" style="color: red">Email/Password salah, Silahkan coba lagi</h5>
-            <div class="modal-footer">
-                <button type="submit" name="submit" class="btn btn-primary">Login</button>
-                <a href="<?= base_url('index.php/Register') ?>" class="btn btn-warning">Register</a>
-            </div>
-            <?php echo $this->session->flashdata('msg'); ?>
-        </form>
+                <div class="modal-footer">
+                    <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                    Don't have account?, register 
+                    <a href="<?= base_url('index.php/Register') ?>" class="">Here</a>
+                </div>
+                <?php echo $this->session->flashdata('msg'); ?>
+            </form>
+        </div>
+    <?= $footer ?>
     </div>
 </body>
 

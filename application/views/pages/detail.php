@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div id="main" style="height: 100%; background-color: #E6EAED; padding-top: 3rem;">
+    <div id="main" >
         <div class="container" style="background: white; border-radius: 4px; padding: 18px;">
             <h3><?= $hotels[0]['Nama_hotel'] ?></h3>
             <span class="badge badge-pill badge-primary">Hotels</span>

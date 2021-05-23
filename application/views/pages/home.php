@@ -11,13 +11,15 @@
 
 <body>
     <?= $nav ?>
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-12 col-md-10">
-                <?= $carrousel ?>
+    <div id="main">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-10">
+                    <?= $carrousel ?>
+                </div>
             </div>
-        </div>
             <?= $showHotel ?>
+        </div>
     </div>
     <?= $footer ?>
 </body>
