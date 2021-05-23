@@ -10,7 +10,9 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-        $data['style'] = $this->load->view('include/ui',NULL,TRUE);
+        $data['style'] = $this->load->view('include/ui',NULL, TRUE);
+        $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
+		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
 
         $config = array(
             'img_url' => base_url() . 'image_for_captcha/',
