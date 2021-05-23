@@ -18,10 +18,24 @@
         <a class="nav-link" href="<?php echo base_url('index.php/base/aboutUs')?>">About Us</a>
       </li>
     </ul>
-    <form class="form-inline" onSubmit="return false;">
-      <input class="form-control mr-sm-2" id="searchBar" type="search" oninput="search()" placeholder="Search" aria-label="Search">
-      <a href="" class="btn btn-outline-success my-2 my-sm-0" id="submitSearch" >Search</a>
-    </form>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <form class="form-inline" onSubmit="return false;">
+          <input class="form-control mr-sm-2" id="searchBar" type="search" oninput="search()" placeholder="Search" aria-label="Search">
+          <a href="" class="btn btn-outline-success my-2 my-sm-0" id="submitSearch" >Search</a>
+        </form>
+      </li>
+      <li class="nav-item dropdown dropleft">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user-alt"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Login</a>
+          <a class="dropdown-item" href="#">Logout</a>
+          <a class="dropdown-item" href="#">Booking History</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>
 
