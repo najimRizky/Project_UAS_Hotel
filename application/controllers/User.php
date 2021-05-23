@@ -6,10 +6,15 @@ class User extends CI_Controller{
         parent::__construct();
         // $this->load->library('grocery_CRUD');
         // $this->load->model('Hotel');
+        if($this->session->userdata('email')){
+            redirect(base_url('index.php/user/profile'));
+        } else {
+            redirect('index.php/Login');
+        }
     }
 
     public function index(){
-        redirect(base_url('index.php/user/profile'));
+        // redirect(base_url('index.php/user/profile'));
     }
 
     public function profile(){

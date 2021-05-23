@@ -47,8 +47,7 @@ class Login extends CI_Controller {
             }
             // $_SESSION['email'] = $email;
             $this->session->set_userdata('email', $email);
-            // redirect(base_url());
-            echo "Berhasil Login";
+            redirect(base_url());
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">SUMTING WONG WITH YOUR INPUT !</div>');
             redirect(base_url('index.php/Login'));
