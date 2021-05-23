@@ -3,7 +3,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card mb-4" style="width: 15rem;">
                 <div style="height: 200px;">
-                    <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/1.jpeg') ?>" class="card-img-top" alt="...">
+                    <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/'.$hotels[0]['Gambar']) ?>" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body p-2" style="height: 150px;">
                     <h6 class=""><?= $item['Nama_hotel'] ?></h6>
@@ -21,7 +21,7 @@
 <div class="card-columns mt-4">
     <?php foreach ($hotels as $item) { ?>
         <div class="card">
-            <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/1.jpeg') ?>" class="card-img-top" alt="...">
+            <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/'.$hotels[0]['Gambar']) ?>" class="card-img-top" alt="...">
             <div class="card-body p-2">
                 <a href="<?= base_url('index.php/base/detail/'.$item['Id_hotel']) ?>" style="color: rgba(0,0,0,0.8);">
                     <h5 class="card-title" style="margin-bottom: 0;"><?= $item['Nama_hotel'] ?></h5>
