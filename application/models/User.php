@@ -9,9 +9,7 @@ class User extends CI_Model{
 	}
 
     public function cekUser($email, $password){
-        $val1 = $this->db->escape($email);
-        $val2 = $this->db->escape($password);
-        $query = $this->db->get_where('user', array('Email' => $val1, 'Password' => $val2));
+        $query = $this->db->get_where('user', array('Email' => $email, 'Password' => $password));
         return $query->result_array();
     }
 
