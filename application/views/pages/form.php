@@ -21,17 +21,10 @@
                 <input type="number" class="form-control" id="Nomor_telepon" name="Nomor_telepon" placeholder="Nomor Telepon" required>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="row">
-                <div class="col form-group">
-                    <label for="Jumlah kamar">Jumlah kamar</label>
-                    <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" placeholder="Jumlah kamar" required>
-                    <div class="help-block with-errors"></div>
-                </div>
-                    <div class="col form-group">
-                    <label for="Jumlah hari">Jumlah hari</label>
-                    <input type="number" class="form-control" id="Jumlah_hari" name="Jumlah_hari" placeholder="Jumlah hari" required>
-                    <div class="help-block with-errors"></div>
-                </div>
+            <div class="form-group">
+                <label for="Jumlah kamar">Jumlah kamar</label>
+                <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" placeholder="Jumlah kamar" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="row">
                 <div class="col form-group">
@@ -39,8 +32,8 @@
                     <input type="date" class="form-control" id="Tanggal_checkin" placeholder="Tanggal check-in">
                 </div>
                 <div class="col form-group">
-                    <label for="Tanggal check-in">Tanggal check-in</label>
-                    <input type="date" class="form-control" id="Tanggal_checkin" placeholder="Tanggal check-in">
+                    <label for="Tanggal check-out">Tanggal check-out</label>
+                    <input type="date" class="form-control" id="Tanggal_checkout" placeholder="Tanggal check-out">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
