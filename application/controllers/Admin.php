@@ -6,6 +6,12 @@ class Admin extends CI_Controller{
         parent::__construct();
         $this->load->library('grocery_CRUD');
         $this->load->model('Hotel');
+        if(!$this->session->userdata('role')){
+            redirect('index.php/Login');
+        } else {
+            if($this->session->userdata('role') == 'user')
+            redirect(base_url());
+        }
     }
 
     public function index(){
