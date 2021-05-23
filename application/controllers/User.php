@@ -9,6 +9,10 @@ class User extends CI_Controller{
     }
 
     public function index(){
+        redirect(base_url('index.php/user/profile'));
+    }
+
+    public function profile(){
         $data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
@@ -24,6 +28,29 @@ class User extends CI_Controller{
         echo "$notelp<br>";
         echo $tgllahir;
 
+    }
+
+    public function form(){
+		$data['style'] = $this->load->view('include/ui',NULL, TRUE);
+        $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
+		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
+		$this->load->view('pages/form', $data);
+	}
+
+    public function submitForm(){
+        $email = $this->input->post('Email');
+        $nama = $this->input->post('Nama_tamu');
+        $notelp = $this->input->post('Nomor_telepon');
+        $jmlkamar = $this->input->post('Jumlah_kamar');
+        $tglcheckin = $this->input->post('Tanggal_checkin');
+        $tglcheckout = $this->input->post('Tanggal_checkout');
+
+        echo "$email <br>";
+        echo "$nama <br>";
+        echo "$notelp <br>";
+        echo "$jmlkamar <br>";
+        echo "$tglcheckin <br>";
+        echo "$tglcheckout <br>";
     }
 }
 ?>
