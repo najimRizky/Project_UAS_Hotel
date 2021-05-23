@@ -1,17 +1,78 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en" style="height: 1000%;">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= $style ?>
-    <title><?= $hotels[0]['Nama_hotel']?></title>
+    <title><?= $hotels[0]['Nama_hotel'] ?></title>
+    <style>
+        #centered {
+            position: absolute;
+            top: 83%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        #showFullScreen{
+            filter: brightness(50%);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #showFullScreen:hover{
+            filter: brightness(10%);
+        }
+    </style>
 </head>
+
 <body style="height: 100%;">
     <?= $nav ?>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><?= $hotels[0]['Nama_hotel'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" style="max-width: 100%; height: 410px;">
+                                <img style="width: 100%; height: 100%; object-fit:cover;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/1.jpeg') ?>" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item" style="max-width: 100%; height: 410px;">
+                                <img style="width: 100%; height: 100%; object-fit:cover;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/2.jpeg') ?>" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item" style="max-width: 100%; height: 410px;">
+                                <img style="width: 100%; height: 100%; object-fit:cover;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/3.jpeg') ?>" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
     <div id="main" style="height: 100%; background-color: #E6EAED; padding-top: 3rem;">
         <div class="container" style="background: white; border-radius: 4px; padding: 18px;">
-            <h3><?= $hotels[0]['Nama_hotel']?></h3>
+            <h3><?= $hotels[0]['Nama_hotel'] ?></h3>
+            <span class="badge badge-pill badge-primary">Hotels</span>
             <?php for ($i = 0; $i < $hotels[0]['Bintang']; $i++) { ?>
                 <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
             <?php } ?>
@@ -19,7 +80,7 @@
                 <i class="fas fa-map-marked-alt" style="color: gray;"></i> <?= $hotels[0]['Lokasi'] ?>
             </p>
             <div class="row">
-                <div class="col-9" style="height: 414px; padding: 3px; " >
+                <div class="col-9" style="height: 414px; padding: 3px; ">
                     <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/1.jpeg') ?>" alt="">
                 </div>
                 <div class="col-3">
@@ -29,13 +90,14 @@
                     <div class="row" style="height: 138px; padding: 3px;">
                         <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/3.jpeg') ?>" alt="">
                     </div>
-                    <div class="row" style="height: 138px; padding: 3px;">
-                        <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/4.jpeg') ?>" alt="">
+                    <div data-toggle="modal" data-target="#exampleModal" class="row" style="height: 138px; padding: 3px; cursor: pointer;">
+                        <img  id="showFullScreen"  style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/4.jpeg') ?>" alt="">
+                        <div id="centered" class="texr-center" >Show full screen</div>
                     </div>
                 </div>
             </div><br>
             <div class="row">
-                <div class="col-4 offset-8 text-center" style="display: block; text-align:right;" >
+                <div class="col-4 offset-8 text-center" style="display: block; text-align:right;">
                     <div class="row">
                         <div class="col-12 text-right">
                             Price/room/night starts from
@@ -61,10 +123,10 @@
                 </div>
                 <div class="col-12 text-center">
                     <div class="row justify-content-center">
-                    <?php 
-                        foreach($facilities as $item){ 
+                        <?php
+                        foreach ($facilities as $item) {
                             $iconFacility = "";
-                            switch($item['Id_fasilitas']){
+                            switch ($item['Id_fasilitas']) {
                                 case 1:
                                     $iconFacility = '<i class="fas fa-utensils"></i>';
                                     break;
@@ -96,22 +158,23 @@
                                     $iconFacility = '<i class="fas fa-coffee"></i>';
                                     break;
                             }
-                    ?>
-                    <div class="col-2">
-                        <div class="row">
-                            <div class="col-12">
-                                <?= $iconFacility ?>
+                        ?>
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <?= $iconFacility ?>
+                                    </div>
+                                    <div class="col-12">
+                                        <?= $item['deskripsi'] ?>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <?= $item['deskripsi'] ?>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
