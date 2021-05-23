@@ -18,9 +18,23 @@
         <a class="nav-link" href="<?php echo base_url('index.php/base/aboutUs')?>">About Us</a>
       </li>
     </ul>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline" onSubmit="return false;">
+      <input class="form-control mr-sm-2" id="searchBar" type="search" oninput="search()" placeholder="Search" aria-label="Search">
+      <a href="" class="btn btn-outline-success my-2 my-sm-0" id="submitSearch" >Search</a>
     </form>
   </div>
 </nav>
+
+<script>
+  function search(){
+    var keyword = document.getElementById('searchBar').value;
+    var submitSearch = document.getElementById('submitSearch');
+    submitSearch.href = "<?= base_url('index.php/base/search/')?>" + keyword;
+  }
+  $('#searchBar').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13' && document.getElementById('searchBar').value != ""){
+        document.getElementById("submitSearch").click();
+      }
+  });
+</script>
