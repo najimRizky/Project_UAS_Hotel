@@ -9,12 +9,6 @@
     <?= $style ?>
     <script>
         $(document).ready(function() {
-            $('.captcha-refresh').on('click', function() {
-                $.get('<?php echo base_url() . 'index.php/login/refresh'; ?>', function(data) {
-                    $('#image_captcha').html(data);
-                });
-            });
-
             $('#TanggalLahir').datepicker({
                 uiLibrary: 'bootstrap4',
                 format: 'yyyy/mm/dd'
