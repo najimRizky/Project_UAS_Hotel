@@ -39,9 +39,9 @@ class Register extends CI_Controller {
         $this->upload->initialize($config);
 
         if($this->upload->do_upload('Foto')){ //kalo upload foto berhasil
-            $foto = 'assets/customer/'.$this->upload->data('file_name');
+            $foto = $this->upload->data('file_name');
         } else {                              //kalo ga upload
-            $foto = 'assets/customer/default';
+            $foto = 'default.jpg';
         }
         
         return $foto;
