@@ -4,8 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
     public function __construct(){
 		parent::__construct();
-        $this->load->model('user');
+        $this->load->model('User_Model');
         $this->load->helper('captcha');
+
+        if($this->session->userdata('role')){
+            redirect(base_url());
+        } else {
+            if($this->session->userdata('role') == 'admin'){
+                redirect(base_url('index.php/admin'));
+            }
+        }
 	}
 
 	public function index()
@@ -37,8 +45,8 @@ class Login extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        if($this->user->cekUser($email, md5($password)) && $this->checkCaptcha()){
-            if($this->user->getRole($email) == "admin"){
+        if($this->User_Model->cekUser($email, md5($password)) && $this->checkCaptcha()){
+            if($this->User_Model->getRole($email) == "admin"){
                 // $_SESSION['role'] = 'admin';
                 $this->session->set_userdata('role', 'admin');
             } else {

@@ -6,7 +6,7 @@ class Register extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
         // session_start();
-        $this->load->model('user');
+        $this->load->model('User_Model');
         //$this->load->model('transaction');
         //if(isset($_SESSION['role'])) redirect(base_url());
 	}
@@ -26,7 +26,7 @@ class Register extends CI_Controller {
         $notelp = $this->input->post('NoTelp');
         $foto = $this->do_upload();
 
-        $this->user->register($nama, $email, md5($password), $tgllahir, $notelp, $foto);
+        $this->User_Model->register($nama, $email, md5($password), $tgllahir, $notelp, $foto);
         $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert" text-center">Account Registered Successfully !</div>');
         redirect(base_url('index.php/Login'));
     }

@@ -6,19 +6,24 @@ class User extends CI_Controller{
         parent::__construct();
         // $this->load->library('grocery_CRUD');
         // $this->load->model('Hotel');
+        $this->load->model('User_Model');
         if(!$this->session->userdata('role')){
-            redirect('index.php/Login');
+            redirect(base_url('index.php/Login'));
         } else {
-            if($this->session->userdata('role') == 'admin')
-            redirect(base_url('index.php/admin'));
+            if($this->session->userdata('role') == 'admin'){
+                redirect(base_url('index.php/admin'));
+            }
         }
     }
 
     public function index(){
-        // redirect(base_url('index.php/user/profile'));
+        redirect(base_url('index.php/user/profile'));
     }
 
     public function profile(){
+        $email = $this->session->userdata('email');
+        $data['user'] = $this->User_Model->getUser($email);
+
         $data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);

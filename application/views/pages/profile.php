@@ -48,6 +48,10 @@
             cursor: pointer;
             border: solid 1px #BA68C8
         }
+        
+        .list-unstyled li {
+            color: red;
+        }
     </style>
     <script>
         $(document).ready(function() {
@@ -67,22 +71,22 @@
             <div class="row">
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5 mb-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU">
-                        <span class="font-weight-bold">Amelly</span>
-                        <span class="text-black-50">amelly12@bbb.com</span>
+                        <img class="rounded-circle mt-5 mb-3" style="max-width: 100%;" src="<?= base_url('assets/customer/').$user[0]['Foto'] ?>">
+                        <span class="font-weight-bold"><?= $user[0]['Nama'] ?></span>
+                        <span class="text-black-50"><?= $user[0]['Email'] ?></span>
                         <span> </span>
                     </div>
                 </div>
                 <div class="col-md-8 border-right">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Profile Settings</h4>
+                            <h4 class="text-right"><?= $user[0]['Nama'] ?>'s Profile</h4>
                         </div>
                         <?php echo form_open_multipart(base_url('index.php/User/editProfile'), array('type' => 'POST', 'data-toggle' => 'validator', 'role' => 'form')); ?>
                             <div class="form-group row mt-2">
                                 <div class="col-md-12">
                                     <label class="labels">Email</label>
-                                    <input type="email" class="form-control" placeholder="enter email id" value="amelly12@bbb.com" disabled>
+                                    <input type="email" class="form-control" placeholder="enter email id" value="<?= $user[0]['Email'] ?>" disabled>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">Password</label>
@@ -94,17 +98,17 @@
                             <div class="form-group row mt-3">
                                 <div class="col-md-12">
                                     <label for="Nama" class="labels">Name</label>
-                                    <input type="text" class="form-control" placeholder="name" id="Nama" name="Nama" value="Amelly" required>
+                                    <input type="text" class="form-control" placeholder="name" id="Nama" name="Nama" value="<?= $user[0]['Nama'] ?>" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="NoTelp" class="labels">PhoneNumber</label>
-                                    <input type="number" class="form-control" placeholder="enter phone number" id="NoTelp" name="NoTelp" value="08756756734" required>
+                                    <input type="number" class="form-control" placeholder="enter phone number" id="NoTelp" name="NoTelp" value="<?= $user[0]['Nomor_telepon'] ?>" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="TanggalLahir" class="labels">Birth Date</label>
-                                    <input id="TanggalLahir" name="TanggalLahir" width="276" placeholder="yyyy/mm/dd" value="2002/12/23"/>
+                                    <input id="TanggalLahir" name="TanggalLahir" width="276" placeholder="yyyy/mm/dd" value="<?= $user[0]['Tanggal_lahir'] ?>"/>
                                 </div>
                             </div>
                             <div class="mt-5 text-center">

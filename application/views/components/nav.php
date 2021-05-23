@@ -2,7 +2,7 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">LOGO</a>
+  <a class="navbar-brand" href="<?= base_url() ?>">LOGO</a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -61,8 +61,9 @@
           <?php if(!$this->session->userdata('email')) { ?>
             <a class="dropdown-item" href="<?= base_url('index.php/Login') ?>">Login</a>
           <?php } else { ?>
-            <a class="dropdown-item" href="<?= base_url('index.php/Login/logOut') ?>">Logout</a>
+            <a class="dropdown-item" href="<?= base_url('index.php/User/profile') ?>">My Profile</a>
             <a class="dropdown-item" href="#">Booking History</a>
+            <a class="dropdown-item" href="<?= base_url('index.php/Login/logOut') ?>">Logout</a>
           <?php } ?>
         </div>
       </li>
