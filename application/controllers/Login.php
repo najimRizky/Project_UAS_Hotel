@@ -7,17 +7,18 @@ class Login extends CI_Controller {
         $this->load->model('User_Model');
         $this->load->helper('captcha');
 
-        if($this->session->userdata('role')){
-            redirect(base_url());
-        } else {
-            if($this->session->userdata('role') == 'admin'){
-                redirect(base_url('index.php/admin'));
-            }
+        
+        
+        if($this->session->userdata('role') == 'admin'){
+            redirect(base_url('index.php/admin'));
         }
 	}
 
 	public function index()
 	{
+        if($this->session->userdata('role')){
+            redirect(base_url());
+        }
         $data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
