@@ -6,13 +6,41 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Bintang
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">5
+          <?php for ($i = 0; $i < 5; $i++) { ?>
+              <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+          <?php } ?>
+          </a>
+          <a class="dropdown-item" href="#">4
+          <?php for ($i = 0; $i < 4; $i++) { ?>
+              <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+          <?php } ?>
+          </a>
+          <a class="dropdown-item" href="#">3
+          <?php for ($i = 0; $i < 3; $i++) { ?>
+              <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+          <?php } ?>
+          </a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Kota
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Bandung</a>
+          <a class="dropdown-item" href="#">Jakarta</a>
+          <a class="dropdown-item" href="#">Bali</a>
+          <a class="dropdown-item" href="#">Tokyo</a>
+          <a class="dropdown-item" href="#">Seoul</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('index.php/base/aboutUs') ?>">About Us</a>
