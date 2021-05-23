@@ -43,5 +43,14 @@ class Base extends CI_Controller {
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
 		$this->load->view('pages/form', $data);
 	}
+
+	public function search($keyword){
+		$data['style'] = $this->load->view('include/ui',NULL, TRUE);
+        $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
+		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
+		$data['hotels'] = $this->hotel->searchHotel($keyword);
+		$data['keyword'] = $keyword;
+		$this->load->view('pages/searchResult', $data);
+	}
 }
 ?>
