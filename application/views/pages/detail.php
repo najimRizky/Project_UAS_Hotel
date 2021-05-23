@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div id="main" style="height: 100%; background-color: #E6EAED; padding-top: 3rem;">
+    <div id="main" >
         <div class="container" style="background: white; border-radius: 4px; padding: 18px;">
             <h3><?= $hotels[0]['Nama_hotel'] ?></h3>
             <span class="badge badge-pill badge-primary">Hotels</span>
@@ -81,17 +81,17 @@
             </p>
             <div class="row">
                 <div class="col-9" style="height: 414px; padding: 3px; ">
-                    <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/1.jpeg') ?>" alt="">
+                    <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/'.$hotels[0]['Gambar']) ?>" alt="">
                 </div>
                 <div class="col-3">
                     <div class="row" style="height: 138px; padding: 3px;">
-                        <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/2.jpeg') ?>" alt="">
+                        <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/'.$hotels[0]['Gambar2']) ?>" alt="">
                     </div>
                     <div class="row" style="height: 138px; padding: 3px;">
-                        <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/3.jpeg') ?>" alt="">
+                        <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/'.$hotels[0]['Gambar3']) ?>" alt="">
                     </div>
                     <div data-toggle="modal" data-target="#exampleModal" class="row" style="height: 138px; padding: 3px; cursor: pointer;">
-                        <img  id="showFullScreen"  style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/4.jpeg') ?>" alt="">
+                        <img  id="showFullScreen"  style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/'.$hotels[0]['Gambar4']) ?>" alt="">
                         <div id="centered" class="texr-center" >Show full screen</div>
                     </div>
                 </div>
