@@ -5,9 +5,9 @@
   <a class="navbar-brand" href="<?= base_url() ?>"><img width="100px" src="<?= base_url('assets/uploads/images/logo.png') ?>"></a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url() ?>">Home <span class="sr-only">(current)</span></a>
-      </li>
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="<?//= base_url() ?>">Home <span class="sr-only">(current)</span></a>
+      </li> -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Bintang
