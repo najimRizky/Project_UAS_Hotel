@@ -42,8 +42,19 @@ class Base extends CI_Controller {
 		$data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
 		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
-		$data['hotels'] = $this->hotel->searchHotel($keyword);
 		$data['keyword'] = $keyword;
+		$data['hotels'] = $this->hotel->searchHotel($keyword);
+		$hotel['hotels'] = $this->hotel->getAllHotel();
+		$data['kota'] = array();
+
+		if(count($hotel['hotels']) != 0){
+			foreach($hotel['hotels'] as $item){
+				if(!in_array($item['Kota'],$data['kota'])){
+					array_push($data['kota'],$item['Kota']);
+				}
+			}
+		}
+
 		$this->load->view('pages/searchResult', $data);
 	}
 }
