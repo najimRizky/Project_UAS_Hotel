@@ -13,60 +13,70 @@
     <?= $nav ?>
     <div id="main">
         <div class="container">
-            <h3>
-                Showing result for <?= $keyword . ": " . count($hotels) ?> found
-            </h3>
-            <div class="row">
-                <div class="col-4">
-                    <p>Kota:</hp>
-                    <div class="kota">
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="Jakarta" onchange="change();" />Jakarta</label>
+            <p style="text-align: right;">
+                <button class="btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-filter"></i> Filter
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                .<div class="card card-body">
+                        <h4>Filter: </h4>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <p>Kota:</hp>
+                            <div class="kota">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="Jakarta" onchange="change();" />Jakarta</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="Bandung" onchange="change();" />Bandung</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="Bali" onchange="change();" />Bali</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="Seoul" onchange="change();" />Seoul</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="Tokyo" onchange="change();" />Tokyo</label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="Bandung" onchange="change();" />Bandung</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="Bali" onchange="change();" />Bali</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="Bali" onchange="change();" />Seoul</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="Bali" onchange="change();" />Tokyo</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <p>Bintang:</p>
-                    <div class="bintang">
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="b3" onchange="change();" />
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="b4" onchange="change();" />
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" rel="b5" onchange="change();" />
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                            </label>
+                        <div class="col-4">
+                            <p>Bintang:</p>
+                            <div class="bintang">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="b3" onchange="change();" />
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="b4" onchange="change();" />
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" rel="b5" onchange="change();" />
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <h3>
+                Showing result for <?= $keyword . ": " . count($hotels) ?> found
+            </h3>
 
             <div class="result">
                 <?php foreach ($hotels as $item) { ?>
