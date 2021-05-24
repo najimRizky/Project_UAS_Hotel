@@ -7,10 +7,10 @@ class Login extends CI_Controller {
         $this->load->model('User_Model');
         $this->load->helper('captcha');
 
-        
-        
         if($this->session->userdata('role') == 'admin'){
             redirect(base_url('index.php/admin'));
+        }else if($this->session->userdata('role') == 'user'){
+            redirect(base_url());
         }
 	}
 
@@ -50,13 +50,15 @@ class Login extends CI_Controller {
             if($this->User_Model->getRole($email) == "admin"){
                 // $_SESSION['role'] = 'admin';
                 $this->session->set_userdata('role', 'admin');
+                $this->session->set_userdata('email', $email);
+                redirect(base_url('index.php/admin'));
             } else {
                 // $_SESSION['role'] = 'user';
                 $this->session->set_userdata('role', 'user');
+                $this->session->set_userdata('email', $email);
+                redirect(base_url());
             }
             // $_SESSION['email'] = $email;
-            $this->session->set_userdata('email', $email);
-            redirect(base_url());
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">SUMTING WONG WITH YOUR INPUT !</div>');
             redirect(base_url('index.php/Login'));
