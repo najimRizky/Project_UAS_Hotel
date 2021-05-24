@@ -8,6 +8,7 @@
     <?= $style ?>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <title>Form</title>
+    
     <script>
         $(document).ready(function() {
             var today, datepicker;
@@ -23,7 +24,9 @@
                 var year = datearray[0];
                 var month = datearray[1];
                 var day = datearray[2];
+                day++
                 var minimumDate = (year +"/"+ month +"/"+ day);
+                console.log(day);
                 $('#Tanggal_checkout').datepicker({
                     uiLibrary: 'bootstrap4',
                     format: 'yyyy/mm/dd',
@@ -38,7 +41,8 @@
 <body style="height: 100%;">
     <?= $nav ?>
     <div id="main">
-        <div class="container" style="background: white;">
+        <div class="container" style="background: white; padding-top: 32px">
+            <h3 class="text-center">Hotel BLBALBALBA</h3>
             <div class="col-md-8 offset-md-2">
                 <form class="" method="POST" action="<?= base_url('index.php/User/submitForm') ?>">
                     <div class="form-group" >
@@ -56,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Jumlah_kamar">Jumlah kamar</label>
-                        <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" placeholder="Jumlah kamar" min="0" required>
+                        <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" onchange="calculateTotal()" placeholder="Jumlah kamar" min="0" value="1" required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="row">
@@ -69,9 +73,17 @@
                         </div>
                         <div class="col form-group">
                             <label for="Tanggal_checkout">Tanggal check-out</label>
-                            <input class="form-control" readonly id="Tanggal_checkout" disabled name="Tanggal_checkout" placeholder="YYYY/MM/DD" required>
+                            <input class="form-control" readonly id="Tanggal_checkout" name="Tanggal_checkout" onchange="calculateTotal()" placeholder="YYYY/MM/DD" required>
                         </div>
-                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="Hari" name="Hari" value="0" readonly>
+                        <label for="Total">Total</label>
+                        <input class="form-control" id="Total" name="Total" value="0" readonly>
+                    </div>
+                    <div style="margin-bottom: 10px; margin-top: -10px">
+                        <small>Harga kamar * jumlah hari * jumlah kamar</small><br>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -81,5 +93,30 @@
         <?= $footer ?>
     </div>
 
+    <script>
+        function calculateTotal() {
+            var harga = 100000;
+
+            var kamar = document.getElementById('Jumlah_kamar').value;
+            var checkin = document.getElementById('Tanggal_checkin').value;
+            var checkout = document.getElementById('Tanggal_checkout').value;
+
+            checkin = new Date(checkin);
+            checkout = new Date(checkout);
+
+            days = (checkout - checkin) / (1000 * 60 * 60 * 24);
+            days = Math.round(days);
+
+            var total = harga * days * kamar;
+
+            if(isNaN(total)){
+                document.getElementById('Total').value = 0;
+            } else {
+                document.getElementById('Total').value = total;
+            }
+            document.getElementById('Hari').value = days;
+
+        }
+    </script>
 </body>
 </html>

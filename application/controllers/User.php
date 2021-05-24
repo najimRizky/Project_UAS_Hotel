@@ -49,19 +49,41 @@ class User extends CI_Controller{
 	}
 
     public function submitForm(){
+        // $idhotel =
         $email = $this->input->post('Email');
         $nama = $this->input->post('Nama_tamu');
         $notelp = $this->input->post('Nomor_telepon');
         $jmlkamar = $this->input->post('Jumlah_kamar');
+        $jmlhari = $this->input->post('Hari');
         $tglcheckin = $this->input->post('Tanggal_checkin');
         $tglcheckout = $this->input->post('Tanggal_checkout');
+        $total = $this->input->post('Total');
 
-        echo "$email <br>";
-        echo "$nama <br>";
-        echo "$notelp <br>";
-        echo "$jmlkamar <br>";
-        echo "$tglcheckin <br>";
-        echo "$tglcheckout <br>";
+        // echo "$email <br>";
+        // echo "$nama <br>";
+        // echo "$notelp <br>";
+        // echo "$jmlkamar <br>";
+        // echo "$jmlhari <br>";
+        // echo "$tglcheckin <br>";
+        // echo "$tglcheckout <br>";
+        // echo "$total <br>";
+
+        // $data = array(                       -----------------------------
+        //     'id_booking' => 13,              GET ID HOTEL, ITUNG ID BOOKING
+        //     'Id_hotel' => 22,
+        //     'Email' => $email,
+        //     'Nama_tamu' => $nama,
+        //     'Nomor_telepon' => $notelp,
+        //     'Jumlah_kamar' => $jmlkamar,
+        //     'Jumlah_hari' => $jmlhari,
+        //     'Tgl_checkin' => $tglcheckin,
+        //     'Tgl_checkout' => $tglcheckout,
+        //     'Total_harga' => $total,
+        // );
+        
+        // $this->db->insert('booking', $data);
+            
+        
     }
 }
 ?>
