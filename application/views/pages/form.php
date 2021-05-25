@@ -19,6 +19,7 @@
                 minDate: today
             });
 
+            var tmpDate = "";
             $('#Tanggal_checkin').on('change', function() { 
                 var datearray = $('#Tanggal_checkin').val().split("/");
                 var year = datearray[0];
@@ -26,13 +27,28 @@
                 var day = datearray[2];
                 day++
                 var minimumDate = (year +"/"+ month +"/"+ day);
-                console.log(day);
+                if(tmpDate == ""){
+                    tmpDate = $('#Tanggal_checkin').val();
+                }else{
+                    if($('#Tanggal_checkin').val() != tmpDate){
+                        $('#Tanggal_checkout').datepicker('destroy');
+                        tmpDate =  $('#Tanggal_checkin').val(); 
+                        /*if($('#Tanggal_checkin').val() > $('#Tanggal_checkout').val()){
+                        }else{
+                            tmpDate =  $('#Tanggal_checkout').val(); 
+                            $('#Tanggal_checkout').datepicker('destroy');
+                            $('#Tanggal_checkout').datepicker('setValue', $(this).val(tmpDate));
+                            tmpDate = $('#Tanggal_checkin').val();
+                        }*/
+                    }
+                }
                 $('#Tanggal_checkout').datepicker({
                     uiLibrary: 'bootstrap4',
                     format: 'yyyy/mm/dd',
                     minDate: minimumDate
                 });
                 document.getElementById('Tanggal_checkout').disabled = false;
+                calculateTotal();
             });
         });
 
@@ -73,7 +89,7 @@
                         </div>
                         <div class="col form-group">
                             <label for="Tanggal_checkout">Tanggal check-out</label>
-                            <input class="form-control" readonly id="Tanggal_checkout" name="Tanggal_checkout" onchange="calculateTotal()" placeholder="YYYY/MM/DD" required>
+                            <input class="form-control" readonly id="Tanggal_checkout" disabled name="Tanggal_checkout" onchange="calculateTotal()" placeholder="YYYY/MM/DD" required>
                         </div>
                     </div>
                     
