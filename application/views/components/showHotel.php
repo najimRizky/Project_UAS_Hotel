@@ -11,7 +11,7 @@
                 <?php } ?>
                 <p style="font-size: 10px; color: maroon;"><i class="fas fa-map-marked-alt"></i> <?= $item['Kota'] ?></p>
                 <p>Rp<?= number_format($item['Harga']) ?></p>
-                <a href="#" class="btn btn-primary text-center">Book now</a>
+                <a href="<?= base_url('index.php/User/form?idHotel=').$item['Id_hotel'] ?>" class="btn btn-primary text-center">Book now</a>
             </div>
         </div>
     <?php } ?>

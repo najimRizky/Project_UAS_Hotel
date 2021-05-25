@@ -9,7 +9,8 @@ class Hotel extends CI_Model{
 	}
 
     public function getSpesificHotel($id) {
-		$query = $this->db->query("SELECT * FROM `hotel` WHERE `Id_hotel` = '$id'");
+		// $query = $this->db->query("SELECT * FROM `hotel` WHERE `Id_hotel` = '$id'");
+		$query = $this->db->get_where('hotel', array('Id_hotel' => $id));
 		return $query->result_array();
 	}
 

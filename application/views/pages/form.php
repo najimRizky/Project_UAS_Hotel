@@ -62,7 +62,7 @@
     <?= $nav ?>
     <div id="main">
         <div class="container" style="background: white; padding-top: 32px">
-            <h3 class="text-center">Hotel BLBALBALBA</h3>
+            <h3 class="text-center">Hotel <?= $hotel[0]['Nama_hotel'] ?></h3>
             <div class="col-md-8 offset-md-2">
                 <form class="" method="POST" action="<?= base_url('index.php/User/submitForm') ?>">
                     <div class="form-group">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Jumlah_kamar">Jumlah kamar</label>
-                        <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" onchange="calculateTotal()" placeholder="Jumlah kamar" min="0" value="1" required>
+                        <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" onchange="calculateTotal()" placeholder="Jumlah kamar" min="1" value="1" required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="row">
@@ -99,6 +99,7 @@
 
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="Hari" name="Hari" value="0" readonly>
+                        <input type="hidden" class="form-control" id="Id_hotel" name="Id_hotel" value="<?= $hotel[0]['Id_hotel'] ?>" readonly>
                         <label for="Total">Total</label>
                         <input class="form-control" id="Total" name="Total" value="0" readonly>
                     </div>
@@ -115,7 +116,7 @@
 
     <script>
         function calculateTotal() {
-            var harga = 100000;
+            var harga = <?= $hotel[0]['Harga'] ?>;
 
             var kamar = document.getElementById('Jumlah_kamar').value;
             var checkin = document.getElementById('Tanggal_checkin').value;

@@ -15,6 +15,7 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-12 col-md-10">
+                    <?php echo $this->session->flashdata('msg'); ?>
                     <?= $carrousel ?>
                 </div>
             </div>

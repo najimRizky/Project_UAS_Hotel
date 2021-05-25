@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col4">
+                                <div class="col-4">
                                     <p>Harga</p>
                                     <input type="number" oninput="filterPrice()" id="minprice" class="form-control" value="" placeholder="Minimal harga">
                                     <br>
