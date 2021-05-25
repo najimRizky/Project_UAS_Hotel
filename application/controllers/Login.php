@@ -6,12 +6,6 @@ class Login extends CI_Controller {
 		parent::__construct();
         $this->load->model('User_Model');
         $this->load->helper('captcha');
-
-        if($this->session->userdata('role') == 'admin'){
-            redirect(base_url('index.php/admin'));
-        }else if($this->session->userdata('role') == 'user'){
-            redirect(base_url());
-        }
 	}
 
 	public function index()
