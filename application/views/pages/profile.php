@@ -93,7 +93,7 @@
                                 <div class="col-md-6">
                                     <label class="labels">Password</label>
                                     <div class="col-md-12" style="padding: 0;">
-                                        <a href="" class="btn btn-link btn-sm">Change Password</a>
+                                        <a href="<?= base_url('index.php/user/changePassword') ?>" class="btn btn-link btn-sm">Change Password</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller{
     public function __construct(){
         parent::__construct();
-        // $this->load->library('grocery_CRUD');
-        // $this->load->model('Hotel');
+
+        $this->load->model('Hotel');
         $this->load->model('User_Model');
         if(!$this->session->userdata('role')){
             redirect(base_url('index.php/Login'));
@@ -28,6 +28,9 @@ class User extends CI_Controller{
             $data['error'] = $this->session->flashdata('error_upload');
         } else if($this->session->flashdata('msg')) {
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Your profile updated successfully !</div>');
+            $data['error'] = '';
+        } else if($this->session->flashdata('pass')){
+            $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Change password success</div>');
             $data['error'] = '';
         } else {
             $data['error'] = '';
@@ -130,6 +133,25 @@ class User extends CI_Controller{
         // $this->db->insert('booking', $data);
             
         
+    }
+
+    public function changePassword(){
+        if($this->input->method() == 'post'){
+            $oldPass = $this->input->post('oldPass');
+            $newPass = $this->input->post('newPass');
+            $email = $this->session->userdata('email');
+            if($this->User_Model->cekUser($email,md5($oldPass))){
+                $this->User_Model->changePassword($email,md5($newPass));
+                $this->session->set_flashdata('pass', '<div class="alert alert-success text-center">Change password success</div>');
+                redirect(base_url('index.php/user/profile'));
+            }else{
+                $this->session->set_flashdata('wrong', '<div class="alert alert-danger text-center">Old password incorrect</div>');
+                redirect(base_url('index.php/user/changePassword'));
+            }
+        }else{
+            $data['style'] = $this->load->view('include/ui',NULL, TRUE);
+            $this->load->view('pages/changePass', $data);
+        }
     }
 }
 ?>
