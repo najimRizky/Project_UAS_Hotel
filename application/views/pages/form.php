@@ -39,7 +39,7 @@
                     initTglCheckout(minimumDate);
                 } else {
                     if ($('#Tanggal_checkin').val() != tmpDate) {
-                        if ($('#Tanggal_checkin').val() > $('#Tanggal_checkout').val()) {
+                        if ($('#Tanggal_checkin').val() >= $('#Tanggal_checkout').val()) {
                             $('#Tanggal_checkout').datepicker('destroy');
                             initTglCheckout(minimumDate);
                         } else {

@@ -23,6 +23,12 @@ class User extends CI_Controller{
     public function profile(){
         $email = $this->session->userdata('email');
         $data['user'] = $this->User_Model->getUser($email);
+        
+        if($this->session->flashdata('error_upload')){
+            $data['error'] = $this->session->flashdata('error_upload');
+        } else {
+            $data['error'] = '';
+        }
 
         $data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
@@ -31,14 +37,55 @@ class User extends CI_Controller{
     }
 
     public function editProfile(){
-        $nama = $this->input->post('Nama');
-        $notelp = $this->input->post('NoTelp');
-        $tgllahir = $this->input->post('TanggalLahir');
+        $data['error'] = "";
+        if($this->input->method() == 'post'){
+            $config['upload_path'] = './assets/customer/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['overwrite'] = TRUE;
+            $config['max_size'] = '1024';
 
-        echo "$nama<br>";
-        echo "$notelp<br>";
-        echo $tgllahir;
+            $this->upload->initialize($config);
 
+            $email = $this->input->post('Email');
+            $nama = $this->input->post('Nama');
+            $notelp = $this->input->post('NoTelp');
+            $tgllahir = $this->input->post('TanggalLahir');
+            $data = $this->User_Model->getUser($email);
+            foreach($data as $row){
+                $pass = $row['Password'];
+            }
+            
+            if($this->upload->do_upload('PosterLink')){	//kalo upload foto berhasil
+                
+                $posterLink = "".$this->upload->data('file_name');
+
+                if($posterLink == ""){
+                    foreach($data as $row){
+                        $posterLink = $row['Foto'];
+                    }
+                }
+                $data['error'] = '';
+                $this->User_Model->updateUser($email,$nama,$notelp,$tgllahir,$posterLink,$pass);
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Your profile updated successfully !</div>');
+            } else if($_FILES['PosterLink']['error'] == 4){ //kalo ga upload foto
+
+                $posterLink = "";
+
+                if($posterLink == ""){
+                    foreach($data as $row){
+                        $posterLink = $row['Foto'];
+                    }
+                }
+                $data['error'] = '';
+                $this->User_Model->updateUser($email,$nama,$notelp,$tgllahir,$posterLink,$pass);
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Your profile updated successfully !</div>');
+            } else {    //kalo gagal upload foto
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('error_upload',$error);
+            }
+        } 
+        
+        redirect(base_url('index.php/User/profile'));
     }
 
     public function form(){

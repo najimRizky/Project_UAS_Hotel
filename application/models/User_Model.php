@@ -36,5 +36,19 @@ class User_Model extends CI_Model{
     
         $this->db->insert('user', $data);
     }
+
+    public function updateUser($email,$nama,$notelp,$tgllahir,$posterLink,$pass)
+		{
+			$data = array(
+                'Nama' => $nama,
+				'Email' => $email,
+				'Nomor_telepon' => $notelp,
+				'Tanggal_lahir' => $tgllahir,
+				'Foto' => $posterLink,
+                'Password' => $pass
+			);
+
+			$this->db->replace('user', $data);
+		}
 }
 ?>

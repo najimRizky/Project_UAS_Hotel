@@ -68,6 +68,7 @@
 
     <div class="container">
         <div class="container rounded bg-white mt-5 mb-5">
+        <?php echo $this->session->flashdata('msg'); ?>
             <div class="row">
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -87,6 +88,7 @@
                                 <div class="col-md-12">
                                     <label class="labels">Email</label>
                                     <input type="email" class="form-control" placeholder="enter email id" value="<?= $user[0]['Email'] ?>" disabled>
+                                    <input type="hidden" name="Email" value="<?= $user[0]['Email'] ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="labels">Password</label>
@@ -98,7 +100,8 @@
                                     <label class="labels">Change Profile Picture</label>
                                     <div class="col-md-12" style="padding: 0;">
                                         <input type="file" class="form-control" id="PosterLink" name="PosterLink" placeholder="PosterLink" value="">
-					                    
+                                        <small>Max. size 1MB</small>
+					                    <span style="color: red"> <?php echo $error ?> </span>
                                     </div>
                                 </div>
                             </div>
