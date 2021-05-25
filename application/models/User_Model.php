@@ -37,7 +37,7 @@ class User_Model extends CI_Model{
         $this->db->insert('user', $data);
     }
 
-    public function updateUser($email,$nama,$notelp,$tgllahir,$posterLink,$pass)
+    public function updateUser($email,$nama,$notelp,$tgllahir,$posterLink)
 		{
 			$data = array(
                 'Nama' => $nama,
@@ -45,10 +45,9 @@ class User_Model extends CI_Model{
 				'Nomor_telepon' => $notelp,
 				'Tanggal_lahir' => $tgllahir,
 				'Foto' => $posterLink,
-                'Password' => $pass
 			);
 
-			$this->db->replace('user', $data);
+			$this->db->update('user', $data, array('Email' => $email));
 		}
 }
 ?>

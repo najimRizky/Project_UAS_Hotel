@@ -26,6 +26,9 @@ class User extends CI_Controller{
         
         if($this->session->flashdata('error_upload')){
             $data['error'] = $this->session->flashdata('error_upload');
+        } else if($this->session->flashdata('msg')) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Your profile updated successfully !</div>');
+            $data['error'] = '';
         } else {
             $data['error'] = '';
         }
@@ -37,7 +40,6 @@ class User extends CI_Controller{
     }
 
     public function editProfile(){
-        $data['error'] = "";
         if($this->input->method() == 'post'){
             $config['upload_path'] = './assets/customer/';
             $config['allowed_types'] = 'jpg|png|jpeg';
@@ -51,9 +53,6 @@ class User extends CI_Controller{
             $notelp = $this->input->post('NoTelp');
             $tgllahir = $this->input->post('TanggalLahir');
             $data = $this->User_Model->getUser($email);
-            foreach($data as $row){
-                $pass = $row['Password'];
-            }
             
             if($this->upload->do_upload('PosterLink')){	//kalo upload foto berhasil
                 
@@ -65,7 +64,7 @@ class User extends CI_Controller{
                     }
                 }
                 $data['error'] = '';
-                $this->User_Model->updateUser($email,$nama,$notelp,$tgllahir,$posterLink,$pass);
+                $this->User_Model->updateUser($email,$nama,$notelp,$tgllahir,$posterLink);
                 $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Your profile updated successfully !</div>');
             } else if($_FILES['PosterLink']['error'] == 4){ //kalo ga upload foto
 
@@ -77,7 +76,7 @@ class User extends CI_Controller{
                     }
                 }
                 $data['error'] = '';
-                $this->User_Model->updateUser($email,$nama,$notelp,$tgllahir,$posterLink,$pass);
+                $this->User_Model->updateUser($email,$nama,$notelp,$tgllahir,$posterLink);
                 $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Your profile updated successfully !</div>');
             } else {    //kalo gagal upload foto
                 $error = $this->upload->display_errors();
