@@ -6,13 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= $style ?>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Form</title>
-    
+
     <script>
+        function initTglCheckout(minimumDate) {
+            $('#Tanggal_checkout').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'yyyy/mm/dd',
+                minDate: minimumDate,
+            });
+        }
         $(document).ready(function() {
             var today, datepicker;
-    		today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+            today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
             $('#Tanggal_checkin').datepicker({
                 uiLibrary: 'bootstrap4',
                 format: 'yyyy/mm/dd',
@@ -20,40 +27,37 @@
             });
 
             var tmpDate = "";
-            $('#Tanggal_checkin').on('change', function() { 
+            $('#Tanggal_checkin').on('change', function() {
                 var datearray = $('#Tanggal_checkin').val().split("/");
                 var year = datearray[0];
                 var month = datearray[1];
                 var day = datearray[2];
                 day++
-                var minimumDate = (year +"/"+ month +"/"+ day);
-                if(tmpDate == ""){
+                var minimumDate = (year + "/" + month + "/" + day);
+                if (tmpDate == "") {
                     tmpDate = $('#Tanggal_checkin').val();
-                }else{
-                    if($('#Tanggal_checkin').val() != tmpDate){
-                        $('#Tanggal_checkout').datepicker('destroy');
-                        tmpDate =  $('#Tanggal_checkin').val(); 
-                        /*if($('#Tanggal_checkin').val() > $('#Tanggal_checkout').val()){
-                        }else{
-                            tmpDate =  $('#Tanggal_checkout').val(); 
+                    initTglCheckout(minimumDate);
+                } else {
+                    if ($('#Tanggal_checkin').val() != tmpDate) {
+                        if ($('#Tanggal_checkin').val() > $('#Tanggal_checkout').val()) {
                             $('#Tanggal_checkout').datepicker('destroy');
-                            $('#Tanggal_checkout').datepicker('setValue', $(this).val(tmpDate));
-                            tmpDate = $('#Tanggal_checkin').val();
-                        }*/
+                            initTglCheckout(minimumDate);
+                        } else {
+                            tmpDate = $('#Tanggal_checkout').val();
+                            $('#Tanggal_checkout').datepicker('destroy');
+                            initTglCheckout(minimumDate);
+                            $('#Tanggal_checkout').datepicker().value(tmpDate);
+                        }
+                        tmpDate = $('#Tanggal_checkin').val();
+                        calculateTotal();
                     }
                 }
-                $('#Tanggal_checkout').datepicker({
-                    uiLibrary: 'bootstrap4',
-                    format: 'yyyy/mm/dd',
-                    minDate: minimumDate
-                });
                 document.getElementById('Tanggal_checkout').disabled = false;
-                calculateTotal();
             });
         });
-
     </script>
 </head>
+
 <body style="height: 100%;">
     <?= $nav ?>
     <div id="main">
@@ -61,7 +65,7 @@
             <h3 class="text-center">Hotel BLBALBALBA</h3>
             <div class="col-md-8 offset-md-2">
                 <form class="" method="POST" action="<?= base_url('index.php/User/submitForm') ?>">
-                    <div class="form-group" >
+                    <div class="form-group">
                         <label for="Email">Email address</label>
                         <input type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
@@ -92,7 +96,7 @@
                             <input class="form-control" readonly id="Tanggal_checkout" disabled name="Tanggal_checkout" onchange="calculateTotal()" placeholder="YYYY/MM/DD" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="Hari" name="Hari" value="0" readonly>
                         <label for="Total">Total</label>
@@ -125,7 +129,7 @@
 
             var total = harga * days * kamar;
 
-            if(isNaN(total)){
+            if (isNaN(total)) {
                 document.getElementById('Total').value = 0;
             } else {
                 document.getElementById('Total').value = total.toLocaleString('en');
@@ -135,4 +139,5 @@
         }
     </script>
 </body>
+
 </html>
