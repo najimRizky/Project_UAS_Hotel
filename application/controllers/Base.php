@@ -53,7 +53,22 @@ class Base extends CI_Controller {
 					array_push($data['kota'],$item['Kota']);
 				}
 			}
+			if(isset($_GET['minprice']) && isset($_GET['maxprice'])){
+				$index = 0;
+				foreach($data['hotels'] as $item){
+					if($item['Harga'] >= $_GET['minprice'] && $item['Harga'] <= $_GET['maxprice']){
+						// echo $item['Harga']." <= ".$_GET['maxprice']."<br>";
+					}else{
+						// echo $item['Harga']." > ".$_GET['maxprice']."<br>";
+						unset($data['hotels'][$index]);
+					}
+					$index++;
+				}
+			}
+			$data['hotels'] = array_values($data['hotels']);
 		}
+
+		// var_dump($data['hotels']);
 
 		$this->load->view('pages/searchResult', $data);
 	}

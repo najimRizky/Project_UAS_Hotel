@@ -32,5 +32,10 @@ class Hotel extends CI_Model{
 		$query = $this->db->query("SELECT * FROM hotel WHERE Nama_hotel LIKE '%$keyword%'");
 		return $query->result_array();
 	}
+
+	public function searchHotelPrice($keyword){
+		$query = $this->db->query("SELECT * FROM hotel WHERE Nama_hotel LIKE '%$keyword%'");
+		return $query->result_array();
+	}
 }
 ?>
