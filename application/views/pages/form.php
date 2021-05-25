@@ -112,7 +112,7 @@
             if(isNaN(total)){
                 document.getElementById('Total').value = 0;
             } else {
-                document.getElementById('Total').value = total;
+                document.getElementById('Total').value = total.toLocaleString('en');
             }
             document.getElementById('Hari').value = days;
 

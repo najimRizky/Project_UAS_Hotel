@@ -13,61 +13,62 @@
     <?= $nav ?>
     <div id="main">
         <div class="container">
-            <p style="text-align: right;">
-                <button class="btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <i class="fas fa-filter"></i> Filter
-                </button>
-            </p>
-            <div class="collapse" id="collapseExample">
-                .<div class="card card-body">
-                        <h4>Filter: </h4>
-                    <div class="row justify-content-center">
-                        <div class="col-4">
-                            <p>Kota:</hp>
-                            <div class="kota">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="Jakarta" onchange="change();" />Jakarta</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="Bandung" onchange="change();" />Bandung</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="Bali" onchange="change();" />Bali</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="Seoul" onchange="change();" />Seoul</label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="Tokyo" onchange="change();" />Tokyo</label>
-                                </div>
-                            </div>
+            <?php if (count($hotels) != 0) { ?>
+                <p style="text-align: right;">
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </p>
+            <?php } ?>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="col-4">
-                            <p>Bintang:</p>
-                            <div class="bintang">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="b3" onchange="change();" />
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                    </label>
+                        <div class="modal-body">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <p>Kota:</hp>
+                                    <div class="kota">
+                                        <?php foreach ($kota as $city) { ?>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" rel="<?= $city ?>" onchange="change();" /><?= $city ?></label>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
                                 </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="b4" onchange="change();" />
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" rel="b5" onchange="change();" />
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                        <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
-                                    </label>
+                                <div class="col-4">
+                                    <p>Bintang:</p>
+                                    <div class="bintang">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" rel="b3" onchange="change();" />
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" rel="b4" onchange="change();" />
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" rel="b5" onchange="change();" />
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                                <i class="fas fa-star" style="color: #fcba03; font-size: 16px;"></i>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
