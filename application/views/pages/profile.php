@@ -88,10 +88,17 @@
                                     <label class="labels">Email</label>
                                     <input type="email" class="form-control" placeholder="enter email id" value="<?= $user[0]['Email'] ?>" disabled>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label class="labels">Password</label>
                                     <div class="col-md-12" style="padding: 0;">
                                         <a href="" class="btn btn-link btn-sm">Change Password</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">Change Profile Picture</label>
+                                    <div class="col-md-12" style="padding: 0;">
+                                        <input type="file" class="form-control" id="PosterLink" name="PosterLink" placeholder="PosterLink" value="">
+					                    
                                     </div>
                                 </div>
                             </div>
