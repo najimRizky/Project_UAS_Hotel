@@ -9,7 +9,7 @@
     <title>Search: <?= count($hotels) ?> Found</title>
 </head>
 
-<body>
+<body onload="getMinMaxFilter()">
     <?= $nav ?>
     <div id="main">
         <div class="container">
@@ -20,8 +20,8 @@
                     </button>
                 </p>
             <?php } ?>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
@@ -70,6 +70,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col4">
+                                    <p>Harga</p>
+                                    <input type="number" oninput="filterPrice()" id="minprice" class="form-control" value="" placeholder="Minimal harga">
+                                    <br>
+                                    <input type="number" oninput="filterPrice()" id="maxprice" class="form-control" value="<?php if(isset($_GET['maxprice'])) echo $_GET['maxprice']; ?>" placeholder="Maksimal harga">
+                                    <br>
+                                    <p id="msg"></p>
+                                    <a href="#" id="btnFilterPrice"  class="btn btn-primary">Submit</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -81,7 +90,7 @@
 
             <div class="result">
                 <?php foreach ($hotels as $item) { ?>
-                    <div id="filter" class="card mb-3 b<?= $item['Bintang'] ?> <?= $item['Kota'] ?>" style="overflow: hidden;">
+                    <div id="filter" class="card mb-3 b<?= $item['Bintang'] ?> <?= $item['Kota'] ?> <?= $item['Harga'] ?>" style="overflow: hidden;">
                         <div class="row">
                             <div class="col-md-3 col-5">
                                 <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/' . $hotels[0]['Gambar']) ?>" class="card-img-top" alt="...">
@@ -110,13 +119,11 @@
 <script>
     function change() {
         var kotaCbs = document.querySelectorAll(".kota input[type='checkbox']");
-        var processorCbs = document.querySelectorAll(".bintang input[type='checkbox']");
+        var bintangCbs = document.querySelectorAll(".bintang input[type='checkbox']");
         var filters = {
             kota: getClassOfCheckedCheckboxes(kotaCbs),
-            bintang: getClassOfCheckedCheckboxes(processorCbs)
+            bintang: getClassOfCheckedCheckboxes(bintangCbs)
         };
-
-
         filterResults(filters);
     }
 
@@ -141,7 +148,7 @@
         }
         for (var i = 0; i < rElems.length; i++) {
             var el = rElems[i];
-            console.log(el);
+            // console.log(el);
             if (filters.kota.length > 0) {
                 var isHidden = true;
                 for (var j = 0; j < filters.kota.length; j++) {
@@ -177,6 +184,37 @@
         }
         for (var i = 0; i < hiddenElems.length; i++) {
             hiddenElems[i].style.display = "none";
+        }
+    }
+
+    function getMinMaxFilter(){
+        <?php if(isset($_GET['maxprice']) && isset($_GET['minprice'])) { ?>
+            document.getElementById("minprice").value = <?php echo $_GET['minprice']; ?>;
+            document.getElementById("maxprice").value = <?php echo $_GET['maxprice']; ?>;
+        <?php } ?>
+    }
+
+    function filterPrice(){
+        var min = document.getElementById("minprice").value;
+        var max = document.getElementById("maxprice").value;
+        var submitFilter = document.getElementById("btnFilterPrice");
+        if(min == 0) min = 0;
+        if(max == 0) max = 0;
+        
+        console.log(min+" "+max);
+        if(min<0 || max<0){
+            submitFilter.href = "#";
+            document.getElementById('msg').innerHTML = "Input tidak valid";
+        }
+        else if(min==0 && max==0) {
+            submitFilter.href = "#";
+            document.getElementById('msg').innerHTML = "";
+        }else if(min<max){
+            submitFilter.href = "<?= base_url('index.php/base/search/'.$keyword) ?>?minprice="+min+"&maxprice="+max;
+            document.getElementById('msg').innerHTML = "";
+        }else if(min>=max){
+            submitFilter.href = "#";
+            document.getElementById('msg').innerHTML = "Input tidak valid";
         }
     }
 </script>
