@@ -7,7 +7,7 @@ class Admin extends CI_Controller{
         $this->load->library('grocery_CRUD');
         $this->load->model('Hotel');
         if(!$this->session->userdata('role')){
-            redirect('index.php/Login');
+            redirect(base_url('index.php/Login'));
         } else {
             if($this->session->userdata('role') == 'user')
             redirect(base_url());
@@ -111,6 +111,29 @@ class Admin extends CI_Controller{
         $kota = $row->Kota;
         return "<img src='$base/$kota/$nama/$value' width='100px'> </img>";
         // return "$base/$kota/$nama/$value";
+    }
+
+    public function crudItemBooking(){
+        $crud = new grocery_CRUD();
+        $crud->set_theme('datatables');
+        $crud->set_table('booking')
+             ->columns('Id_booking','Id_hotel','Email','Nama_tamu','Nomor_telepon','Jumlah_kamar', 'Jumlah_hari', 'Tgl_checkin', 'Tgl_checkout', 'Total_harga', 'Waktu_booking')
+             ->fields('Id_booking','Id_hotel','Email','Nama_tamu','Nomor_telepon','Jumlah_kamar', 'Jumlah_hari', 'Tgl_checkin', 'Tgl_checkout', 'Total_harga', 'Waktu_booking')
+             ->unset_clone()
+             ->callback_column('Tgl_checkin', array($this, 'Tgl_checkin'))
+             ->callback_column('Tgl_checkout', array($this, 'Tgl_checkin'));
+
+        $output = $crud->render();
+        $data['crud'] = get_object_vars($output);
+        $data['groceryCRUD'] = $this->load->view('include/grocerycrud', $data, TRUE);
+
+        $data['style'] = $this->load->view('include/ui',NULL,TRUE);
+        $this->load->view('admin/booking', $data);
+    }
+
+    public function Tgl_checkin($val, $row)
+    {
+        return date('Y/m/d', strtotime($val));
     }
 }
 ?>

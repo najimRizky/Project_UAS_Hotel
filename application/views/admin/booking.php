@@ -12,7 +12,7 @@
 <body>
     <h1>Hotel</h1>
     <a class="btn btn-danger" href="<?php echo base_url('index.php/login/logOut'); ?>">Log Out</a>
-    <a class="btn btn-secondary" href="<?php echo base_url('index.php/Admin/crudItemBooking'); ?>">Booking</a>
+    <a class="btn btn-secondary" href="<?php echo base_url('index.php/Admin'); ?>">Hotel</a>
     <?php echo $crud['output']; ?>
 </body>
 </html>

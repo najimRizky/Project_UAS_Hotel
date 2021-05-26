@@ -110,7 +110,7 @@
                     </div>
                     <div class="row" style="text-align:right;">
                         <div class="col-12 text-right">
-                            <button type="button" class="btn btn-danger">Book Now</button>
+                            <a href="<?= base_url('index.php/User/form?idHotel=').$hotels[0]['Id_hotel'] ?>" class="btn btn-danger">Book Now</a>
                         </div>
                     </div>
                 </div>
