@@ -31,7 +31,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="row justify-content-center">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <p>Kota:</hp>
                                     <div class="kota">
                                         <?php foreach ($kota as $city) { ?>
@@ -41,7 +41,7 @@
                                         <?php } ?>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <p>Bintang:</p>
                                     <div class="bintang">
                                         <div class="checkbox">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <p>Harga</p>
                                     <input type="number" oninput="filterPrice()" id="minprice" class="form-control" value="" placeholder="Minimal harga">
                                     <br>
