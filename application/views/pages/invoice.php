@@ -119,7 +119,7 @@
                         <h4 style="color: gray;">Kebijakan pembatalan</h4>
                     </div>
                     <div class="col-7 ml-4">
-                        <h4 style="">Non-refundable</h4>
+                        <h4 >Non-refundable</h4>
                         <span></span>
                     </div>
                 </div>
