@@ -110,7 +110,7 @@
                     </div>
                     <div class="row" style="text-align:right;">
                         <div class="col-12 text-right">
-                            <button type="button" class="btn btn-danger">Select Room</button>
+                            <button type="button" class="btn btn-danger">Book Now</button>
                         </div>
                     </div>
                 </div>
