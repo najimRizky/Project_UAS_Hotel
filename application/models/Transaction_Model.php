@@ -34,4 +34,13 @@ class Transaction_Model extends CI_Model
         $query = $this->db->query("SELECT * FROM `booking`,`hotel` WHERE `booking`.`Id_hotel` = `hotel`.Id_hotel AND Id_booking = '$idBooking'");
         return $query->result_array();
     }
+
+    public function getLastBooking(){
+        $query = $this->db->select('*')
+                 ->from('booking')
+                 ->order_by('Waktu_booking', 'desc')
+                 ->limit(1)
+                 ->get();
+        return $query->result_array();
+    }
 }
