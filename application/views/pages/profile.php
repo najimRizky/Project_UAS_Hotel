@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5 mb-3" style="max-width: 100%;" src="<?= base_url('assets/customer/').$user[0]['Foto'] ?>">
+                        <img class="rounded-circle mt-5 mb-3" style="max-width: 100%; max-height: 250px;" src="<?= base_url('assets/customer/').$user[0]['Foto'] ?>">
                         <span class="font-weight-bold"><?= $user[0]['Nama'] ?></span>
                         <span class="text-black-50"><?= $user[0]['Email'] ?></span>
                         <span> </span>
