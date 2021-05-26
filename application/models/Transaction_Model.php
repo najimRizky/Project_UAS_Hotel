@@ -16,7 +16,7 @@ class Transaction_Model extends CI_Model
             'Email' => $email,
             'Nama_tamu' => $nama,
             'Nomor_telepon' => $notelp,
-            'Jumlah_kamar' => $jmlkamar,
+            'Jumlah_pesan_kamar' => $jmlkamar,
             'Jumlah_hari' => $jmlhari,
             'Tgl_checkin' => $tglcheckin,
             'Tgl_checkout' => $tglcheckout,
@@ -24,5 +24,14 @@ class Transaction_Model extends CI_Model
         );
         
         $this->db->insert('booking', $data);
+    }
+
+    public function cekValidEmailBooking($idBooking, $email){
+		$query = $this->db->query("SELECT Id_booking, Email FROM booking WHERE Id_booking = '$idBooking' AND Email = '$email'");
+        return $query->result_array();
+    }
+    public function getBooking($idBooking){
+        $query = $this->db->query("SELECT * FROM `booking`,`hotel` WHERE `booking`.`Id_hotel` = `hotel`.Id_hotel AND Id_booking = '$idBooking'");
+        return $query->result_array();
     }
 }

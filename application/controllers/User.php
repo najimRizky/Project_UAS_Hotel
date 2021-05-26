@@ -133,5 +133,15 @@ class User extends CI_Controller{
             $this->load->view('pages/changePass', $data);
         }
     }
+
+    public function invoice($idBooking){
+        if($this->Transaction_Model->cekValidEmailBooking($idBooking,$this->session->userdata('email'))){
+            $data['style'] = $this->load->view('include/ui',NULL, TRUE);
+            $data['booking'] = $this->Transaction_Model->getBooking($idBooking);
+            // var_dump($data['booking']);
+            $this->load->view('pages/invoice',$data);
+        }else{
+            echo "OO tidak bisa";
+        }
+    }
 }
-?>

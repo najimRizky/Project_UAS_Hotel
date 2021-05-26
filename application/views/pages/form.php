@@ -66,8 +66,8 @@
             <div class="col-md-8 offset-md-2">
                 <form class="" method="POST" action="<?= base_url('index.php/User/submitForm') ?>">
                     <div class="form-group">
-                        <label for="Email">Email address</label>
-                        <input type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label class="labels" for="Email">Email</label>
+                        <input type="email" class="form-control" name="Email" placeholder="enter email id" value="<?= $this->session->userdata('email') ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="Nama_tamu">Nama Tamu</label>
