@@ -92,8 +92,8 @@
                 <?php foreach ($hotels as $item) { ?>
                     <div id="filter" class="card mb-3 b<?= $item['Bintang'] ?> <?= $item['Kota'] ?> <?= $item['Harga'] ?>" style="overflow: hidden;">
                         <div class="row">
-                            <div class="col-md-3 col-5">
-                                <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/' . $hotels[0]['Gambar']) ?>" class="card-img-top" alt="...">
+                            <div class="col-md-3 col-5" style="height: 200px;">
+                                <img style="width: 100%; height: 100%; object-fit:cover" src="<?= base_url('assets/uploads/hotel/' . $item['Kota'] . '/' . $item['Nama_hotel'] . '/' . $item['Gambar']) ?>" class="card-img-top" alt="...">
                             </div>
                             <div class="col-md-9 col-7">
                                 <div class="card-body p-2">

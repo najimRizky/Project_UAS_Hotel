@@ -28,7 +28,7 @@
             <a class="dropdown-item" href="<?= base_url('index.php/Login') ?>">Login</a>
           <?php } else { ?>
             <a class="dropdown-item" href="<?= base_url('index.php/User/profile') ?>">My Profile</a>
-            <a class="dropdown-item" href="#">Booking History</a>
+            <a class="dropdown-item" href="<?= base_url('index.php/User/booking') ?>">Booking History</a>
             <a class="dropdown-item" href="<?= base_url('index.php/Login/logOut') ?>">Logout</a>
           <?php } ?>
         </div>

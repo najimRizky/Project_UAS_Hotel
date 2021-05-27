@@ -44,4 +44,9 @@ class Transaction_Model extends CI_Model
                  ->get();
         return $query->result_array();
     }
+
+    public function getAllBooking($email){
+        $query = $this->db->query("SELECT * FROM `booking`,`hotel` WHERE `booking`.`Id_hotel` = `hotel`.Id_hotel AND Email = '$email'");
+        return $query->result_array();
+    }
 }

@@ -145,4 +145,12 @@ class User extends CI_Controller{
             echo "OO tidak bisa";
         }
     }
+
+    public function booking(){
+        $data['style'] = $this->load->view('include/ui',NULL, TRUE);
+        $data['nav'] = $this->load->view('components/nav',NULL, TRUE);
+		$data['footer'] = $this->load->view('components/footer',NULL, TRUE);
+        $data['bookings'] = $this->Transaction_Model->getAllBooking($this->session->userdata('email'));
+        $this->load->view('pages/bookingHistory', $data);
+    }
 }
