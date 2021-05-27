@@ -35,10 +35,11 @@ class Transaction_Model extends CI_Model
         return $query->result_array();
     }
 
-    public function getLastBooking(){
+    public function getLastBooking($email){
         $query = $this->db->select('*')
                  ->from('booking')
                  ->order_by('Waktu_booking', 'desc')
+                 ->where('Email', $email)
                  ->limit(1)
                  ->get();
         return $query->result_array();

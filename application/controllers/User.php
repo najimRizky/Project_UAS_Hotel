@@ -111,7 +111,7 @@ class User extends CI_Controller{
         $total = $this->input->post('Total');
 
         $this->Transaction_Model->insertBooking($idhotel,$email,$nama,$notelp,$jmlkamar,$jmlhari,$tglcheckin,$tglcheckout,$total);
-        $lastBook = $this->Transaction_Model->getLastBooking();
+        $lastBook = $this->Transaction_Model->getLastBooking($this->session->userdata('email'));
         // $this->session->set_flashdata('msg',"<div class='alert alert-success text-center'>Booking Successful</div>");
         redirect(base_url("index.php/User/invoice/").$lastBook[0]['Id_booking']);
     }
