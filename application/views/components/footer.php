@@ -63,7 +63,7 @@
   <hr style="color: white; border-color:white;">
   <div  class="text-center pb-3" >
     © 2021 Copyright:
-    <a class="text-dark" href="#">namahotel</a>
+    <a class="text-dark" href="#">LEMO</a>
   </div>
   <!-- Copyright -->
 </footer>
