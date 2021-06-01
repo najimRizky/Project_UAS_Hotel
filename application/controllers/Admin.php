@@ -25,12 +25,13 @@ class Admin extends CI_Controller{
              ->columns('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang', 'Fasilitas', 'Harga', 'Jumlah_kamar', 'Gambar', 'Gambar2', 'Gambar3', 'Gambar4')
              ->fields('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang', 'Fasilitas', 'Harga', 'Jumlah_kamar', 'Gambar', 'Gambar2', 'Gambar3', 'Gambar4')
              ->unset_clone()
+
              ->callback_edit_field('Lokasi', array($this, 'edit_lokasi'))
              ->callback_edit_field('Nama_hotel', array($this, 'edit_nama'))
              ->callback_edit_field('Kota', array($this, 'edit_kota'))
              ->callback_edit_field('Bintang', array($this, 'edit_bintang'))
              ->callback_edit_field('Id_hotel', array($this, 'edit_id'))
-            //  ->callback_edit_field('Fasilitas', array($this, 'edit_fasilitas'))
+             ->callback_edit_field('Fasilitas', array($this, 'edit_fasilitas'))
 
              ->callback_add_field('Lokasi', array($this, 'add_lokasi'))
              ->callback_add_field('Id_hotel', array($this, 'add_id'))
@@ -139,11 +140,73 @@ class Admin extends CI_Controller{
                 <td><input onchange="gatherFasilitas()" type="checkbox" value="9" /><label>AC</label></td>
             </tr>
             <tr>
-                <td><input type="checkbox" value="10" /><labe">Kopi/Teh di Lobby Hotel</label></td>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="10" /><labe">Kopi/Teh di Lobby Hotel</label></td>
             </tr>
             <input style="display:none;" type="text" id="result" name="Fasilitas" value="">
         </table>'.
         '<script type="text/javascript">
+            function gatherFasilitas(){
+                var selected = new Array();
+        
+                $("#tblFruits input[type=checkbox]:checked").each(function() {
+                    selected.push(this.value);
+                });
+
+                if (selected.length > 0) {
+                    document.getElementById("result").value = selected.join(",");
+                }else{
+                    document.getElementById("result").value = "";
+                }
+            }
+        </script>';
+        return $scriptFasilitas;
+    }
+
+    function edit_fasilitas($value){
+        $scriptFasilitas =
+        '<table id="tblFruits">
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="1" /><label for="">Sarapan Gratis</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="2" /><label>Restoran</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="3" /><label>Wi-fi Internet Gratis</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="4" /><label>Parkir</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="5" /><label>Layanan Front-office 24 Jam</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="6" /><label>Bebas Rokok</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="7" /><label>Kolam renang</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="8" /><label>Bar</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="9" /><label>AC</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="10" /><labe">Kopi/Teh di Lobby Hotel</label></td>
+            </tr>
+            <input style="display:none;" type="text" id="result" name="Fasilitas" value="'.$value.'">
+        </table>'.
+        '<script type="text/javascript">
+        $( document ).ready(function() {
+            var kategori = "'.$value.'".split(",");
+            $("#tblFruits input[type=checkbox]").each(function() {
+                if(kategori.includes(this.value)) {
+                    $(this).attr("checked", "checked");
+                    // console.log("sini");
+                }
+            });
+        });
             function gatherFasilitas(){
                 var selected = new Array();
         
