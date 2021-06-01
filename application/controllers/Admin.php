@@ -141,7 +141,7 @@ class Admin extends CI_Controller{
             <tr>
                 <td><input type="checkbox" value="10" /><labe">Kopi/Teh di Lobby Hotel</label></td>
             </tr>
-            <input type="text" id="result" value="">
+            <input style="display:none;" type="text" id="result" name="Fasilitas" value="">
         </table>'.
         '<script type="text/javascript">
             function gatherFasilitas(){
@@ -152,7 +152,7 @@ class Admin extends CI_Controller{
                 });
 
                 if (selected.length > 0) {
-                    document.getElementById("result").value = selected.join(", ");
+                    document.getElementById("result").value = selected.join(",");
                 }else{
                     document.getElementById("result").value = "";
                 }
