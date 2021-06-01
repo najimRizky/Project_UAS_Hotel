@@ -51,7 +51,10 @@ class Admin extends CI_Controller{
              ->callback_column('Gambar', array($this, 'img_size'))
              ->callback_column('Gambar2', array($this, 'img_size'))
              ->callback_column('Gambar3', array($this, 'img_size'))
-             ->callback_column('Gambar4', array($this, 'img_size'));
+             ->callback_column('Gambar4', array($this, 'img_size'))
+            //  ->callback_column('Fasilitas',array($this,'view_fasilitas'))
+             
+             ->callback_read_field('Fasilitas',array($this,'view_fasilitas'));
 
         $output = $crud->render();
         $data['crud'] = get_object_vars($output);
@@ -222,6 +225,47 @@ class Admin extends CI_Controller{
             }
         </script>';
         return $scriptFasilitas;
+    }
+
+    function view_fasilitas($value){
+        $kategori = array();
+        $kategori = explode(",",$value);
+        $viewFasilitas = "";
+        foreach($kategori as $item){
+            switch ($item){
+                case 1:
+                    $viewFasilitas .= "<li>Sarapan gratis</li>";
+                    break;
+                case 2:
+                    $viewFasilitas .= "<li>Restoran</li>";
+                    break;
+                case 3:
+                    $viewFasilitas .= "<li>Wi-Fi Internet Gratis</li>";
+                    break;
+                case 4:
+                    $viewFasilitas .= "<li>Parkir</li>";
+                    break;
+                case 5:
+                    $viewFasilitas .= "<li>Layanan Front Office 24-jam</li>";
+                    break;
+                case 6:
+                    $viewFasilitas .= "<li>Bebas Rokok</li>";
+                    break;
+                case 7:
+                    $viewFasilitas .= "<li>Kolam Renang</li>";
+                    break;
+                case 8:
+                    $viewFasilitas .= "<li>Bar</li>";
+                    break;
+                case 9:
+                    $viewFasilitas .= "<li>AC</li>";
+                    break;
+                case 10:
+                    $viewFasilitas .= "<li>Kopi/teh di Lobby Hotel</li>";
+                    break;
+            }
+        }
+        return $viewFasilitas;
     }
 
     function img_size($value, $row){
