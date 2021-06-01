@@ -22,17 +22,20 @@ class Admin extends CI_Controller{
         $crud = new grocery_CRUD();
         $crud->set_theme('datatables');
         $crud->set_table('hotel')
-             ->columns('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang','Harga', 'Jumlah_kamar', 'Gambar', 'Gambar2', 'Gambar3', 'Gambar4')
-             ->fields('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang','Harga', 'Jumlah_kamar', 'Gambar', 'Gambar2', 'Gambar3', 'Gambar4')
+             ->columns('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang', 'Fasilitas', 'Harga', 'Jumlah_kamar', 'Gambar', 'Gambar2', 'Gambar3', 'Gambar4')
+             ->fields('Id_hotel','Nama_hotel','Kota','Lokasi','Bintang', 'Fasilitas', 'Harga', 'Jumlah_kamar', 'Gambar', 'Gambar2', 'Gambar3', 'Gambar4')
              ->unset_clone()
              ->callback_edit_field('Lokasi', array($this, 'edit_lokasi'))
              ->callback_edit_field('Nama_hotel', array($this, 'edit_nama'))
              ->callback_edit_field('Kota', array($this, 'edit_kota'))
              ->callback_edit_field('Bintang', array($this, 'edit_bintang'))
              ->callback_edit_field('Id_hotel', array($this, 'edit_id'))
+            //  ->callback_edit_field('Fasilitas', array($this, 'edit_fasilitas'))
+
              ->callback_add_field('Lokasi', array($this, 'add_lokasi'))
              ->callback_add_field('Id_hotel', array($this, 'add_id'))
              ->callback_add_field('Bintang', array($this, 'add_bintang'))
+             ->callback_add_field('Fasilitas', array($this, 'add_fasilitas'))
 
              ->callback_edit_field('Gambar', array($this, 'edit_gambar'))
              ->callback_edit_field('Gambar2', array($this, 'edit_gambar'))
@@ -88,7 +91,7 @@ class Admin extends CI_Controller{
     }
 
     function add_lokasi($value, $primary_key){
-        return "<textarea name='Deskripsi'> $value </textarea>";
+        return "<textarea name='Deskripsi'></textarea>";
     }
 
     function add_id($value, $primary_key){
@@ -103,6 +106,59 @@ class Admin extends CI_Controller{
                     <option value="5">5</option>
                 </select>';
         
+    }
+
+    function add_fasilitas($value){
+        $scriptFasilitas =
+        '<table id="tblFruits">
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="1" /><label for="">Sarapan Gratis</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="2" /><label>Restoran</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="3" /><label>Wi-fi Internet Gratis</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="4" /><label>Parkir</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="5" /><label>Layanan Front-office 24 Jam</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="6" /><label>Bebas Rokok</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="7" /><label>Kolam renang</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="8" /><label>Bar</label></td>
+            </tr>
+            <tr>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="9" /><label>AC</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" value="10" /><labe">Kopi/Teh di Lobby Hotel</label></td>
+            </tr>
+            <input type="text" id="result" value="">
+        </table>'.
+        '<script type="text/javascript">
+            function gatherFasilitas(){
+                var selected = new Array();
+        
+                $("#tblFruits input[type=checkbox]:checked").each(function() {
+                    selected.push(this.value);
+                });
+
+                if (selected.length > 0) {
+                    document.getElementById("result").value = selected.join(", ");
+                }else{
+                    document.getElementById("result").value = "";
+                }
+            }
+        </script>';
+        return $scriptFasilitas;
     }
 
     function img_size($value, $row){
