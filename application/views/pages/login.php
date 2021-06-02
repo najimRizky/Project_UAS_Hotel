@@ -23,6 +23,7 @@
     <div id="main">
         <div class="container mb-2" id="content" style=" padding: 5px 200px 0px 200px; ">
             <h2>Login</h2>
+            <?php echo $this->session->flashdata('msg'); ?>
             <form action="<?php echo base_url('index.php/Login/auth') ?>" method="POST" class="form-horizontal">
                 <div class="form-group">
                     <label for="Email" class="col-sm-2 control-label">Email</label>
@@ -48,7 +49,7 @@
                     Don't have account?, register 
                     <a href="<?= base_url('index.php/Register') ?>" class="">Here</a>
                 </div>
-                <?php echo $this->session->flashdata('msg'); ?>
+                
             </form>
         </div>
     <?= $footer ?>

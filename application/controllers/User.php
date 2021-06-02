@@ -142,7 +142,7 @@ class User extends CI_Controller{
             // var_dump($data['booking']);
             $this->load->view('pages/invoice',$data);
         }else{
-            echo "OO tidak bisa";
+            redirect(base_url());
         }
     }
 

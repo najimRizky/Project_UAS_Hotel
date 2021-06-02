@@ -22,6 +22,9 @@ class Base extends CI_Controller {
 	}
 
 	public function detail($id){
+		if(!$this->hotel->getSpesificHotel($id)){
+			redirect(base_url());
+		}
 		$data['hotels'] = $this->hotel->getSpesificHotel($id);
 		$data['facilities'] = $this->hotel->getFacilities($id);
 
