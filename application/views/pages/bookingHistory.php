@@ -9,7 +9,7 @@
 </head>
 <body>
     <?= $nav ?>
-    <div class="main">
+    <div id="main">
         <div class="container">
             <?php foreach($bookings as $item){ ?>
                 <div id="filter" class="card mb-3 b<?= $item['Bintang'] ?> <?= $item['Kota'] ?> <?= $item['Harga'] ?>" style="overflow: hidden;">

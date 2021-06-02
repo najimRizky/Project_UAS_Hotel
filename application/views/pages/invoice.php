@@ -130,7 +130,7 @@
     <div class="container pt-4">
         <div class="row">
             <div class="col-12 text-right">
-                <a href="<?= base_url() ?>" class="btn btn-secondary">Return</a>
+                <a href="<?= base_url('index.php/User/booking') ?>" class="btn btn-secondary">Return</a>
             </div>
         </div>
     </div>
