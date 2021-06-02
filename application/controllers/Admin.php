@@ -196,7 +196,7 @@ class Admin extends CI_Controller{
                 <td><input onchange="gatherFasilitas()" type="checkbox" value="9" /><label>AC</label></td>
             </tr>
             <tr>
-                <td><input onchange="gatherFasilitas()" type="checkbox" value="10" /><labe">Kopi/Teh di Lobby Hotel</label></td>
+                <td><input onchange="gatherFasilitas()" type="checkbox" value="10" /><label">Kopi/Teh di Lobby Hotel</label></td>
             </tr>
             <input style="display:none;" type="text" id="result" name="Fasilitas" value="'.$value.'">
         </table>'.
@@ -280,8 +280,8 @@ class Admin extends CI_Controller{
         $crud = new grocery_CRUD();
         $crud->set_theme('datatables');
         $crud->set_table('booking')
-             ->columns('Id_booking','Id_hotel','Email','Nama_tamu','Nomor_telepon','Jumlah_kamar', 'Jumlah_hari', 'Tgl_checkin', 'Tgl_checkout', 'Total_harga', 'Waktu_booking')
-             ->fields('Id_booking','Id_hotel','Email','Nama_tamu','Nomor_telepon','Jumlah_kamar', 'Jumlah_hari', 'Tgl_checkin', 'Tgl_checkout', 'Total_harga', 'Waktu_booking')
+             ->columns('Id_booking','Id_hotel','Email','Nama_tamu','Nomor_telepon','Jumlah_pesan_kamar', 'Jumlah_hari', 'Tgl_checkin', 'Tgl_checkout', 'Total_harga', 'Waktu_booking')
+             ->fields('Id_booking','Id_hotel','Email','Nama_tamu','Nomor_telepon','Jumlah_pesan_kamar', 'Jumlah_hari', 'Tgl_checkin', 'Tgl_checkout', 'Total_harga', 'Waktu_booking')
              ->unset_clone()
              ->callback_column('Tgl_checkin', array($this, 'Tgl_checkin'))
              ->callback_column('Tgl_checkout', array($this, 'Tgl_checkin'));
