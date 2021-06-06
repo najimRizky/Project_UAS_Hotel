@@ -29,9 +29,9 @@
                         </div>
                         <div class="col-md-9 col-7">
                             <div class="card-body p-2">
-                                <a href="<?= base_url('index.php/base/detail/' . $booking[0]['Id_hotel']) ?>" style="color: rgba(0,0,0,0.8);">
+                                <div style="color: rgba(0,0,0,0.8);">
                                     <h5 class="card-title" style="margin-bottom: 0;"><?= $booking[0]['Nama_hotel'] ?></h5>
-                                </a>
+                                </div>
                                 <?php for ($i = 0; $i < $booking[0]['Bintang']; $i++) { ?>
                                     <i class="fas fa-star" style="color: #fcba03; font-size: 10px;"></i>
                                 <?php } ?>
