@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 1000%;">
+<html lang="en" style="height: auto;">
 
 <head>
     <meta charset="UTF-8">
@@ -80,10 +80,10 @@
                 <i class="fas fa-map-marked-alt" style="color: gray;"></i> <?= $hotels[0]['Lokasi'] ?>
             </p>
             <div class="row">
-                <div class="col-9" style="height: 414px; padding: 3px; ">
+                <div class="col-md-9" style="height: 414px; padding: 3px; ">
                     <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/'.$hotels[0]['Gambar']) ?>" alt="">
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="row" style="height: 138px; padding: 3px;">
                         <img style="width: 100%; height: 100%; object-fit:cover; border-radius: 5px;" src="<?= base_url('assets/uploads/hotel/' . $hotels[0]['Kota'] . '/' . $hotels[0]['Nama_hotel'] . '/'.$hotels[0]['Gambar2']) ?>" alt="">
                     </div>
@@ -97,7 +97,7 @@
                 </div>
             </div><br>
             <div class="row">
-                <div class="col-4 offset-8 text-center" style="display: block; text-align:right;">
+                <div class="col-md-4 offset-md-8 text-center" style="display: block; text-align:right;">
                     <div class="row">
                         <div class="col-12 text-right">
                             Price/room/night starts from
@@ -116,7 +116,7 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-4" style="background: white; border-radius: 4px; padding: 18px;">
+        <div class="container mt-4 mb-4" style="background: white; border-radius: 4px; padding: 18px;">
             <div class="row">
                 <div class="col-12 text-center">
                     <h3>Facilities</h3>
@@ -159,7 +159,7 @@
                                     break;
                             }
                         ?>
-                            <div class="col-2">
+                            <div class="col-md-2 col-4">
                                 <div class="row">
                                     <div class="col-12">
                                         <?= $iconFacility ?>
@@ -174,6 +174,7 @@
                 </div>
             </div>
         </div>
+        <?= $footer ?>
     </div>
 </body>
 
