@@ -80,7 +80,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Jumlah_kamar">Jumlah kamar</label>
-                        <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" onchange="calculateTotal()" placeholder="Jumlah kamar" min="1" value="1" required>
+                        <input type="number" class="form-control" id="Jumlah_kamar" name="Jumlah_kamar" onchange="calculateTotal()" placeholder="Jumlah kamar" min="1" value="1" max="<?= $hotel[0]['Jumlah_kamar'] ?>" required>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="row">
