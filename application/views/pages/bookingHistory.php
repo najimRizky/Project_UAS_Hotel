@@ -13,7 +13,9 @@
     <?= $nav ?>
     <div id="main">
         <div class="container mb-2">
-            <?php foreach ($bookings as $item) { ?>
+            <?php if(count($bookings) == 0){ ?>
+                <h1>You don't have any booking yet</h1>
+            <?php }else{ foreach ($bookings as $item) { ?>
                 <div id="" class="card mb-12" style="overflow: hidden;">
                     <div class="row">
                         <div class="col-md-9 col-7">
@@ -51,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } }?>
                 </div>
         </div>
     </div>
