@@ -9,6 +9,10 @@
 </head>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt&display=swap');
+body{
+  font-family: 'Rokkitt', serif;
+}
 .pic {
   overflow: hidden;
   width: 150px;
