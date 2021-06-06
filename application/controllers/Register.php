@@ -21,6 +21,12 @@ class Register extends CI_Controller {
     public function auth(){
         $nama = $this->input->post('Nama');
         $email = $this->input->post('Email');
+
+        if($this->User_Model->getUser($email)){ //kalo ada user dengan email sama
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert" text-center">Email Already Registered!</div>');
+            redirect(base_url('index.php/Register'));
+        }
+
         $password = $this->input->post('Password');
         $tgllahir = $this->input->post('TanggalLahir');
         $notelp = $this->input->post('NoTelp');

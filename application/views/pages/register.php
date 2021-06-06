@@ -27,6 +27,7 @@
     <div id="main" style="margin-bottom: -16px;">
         <div class="container">
             <h1>Register</h1>
+            <?php echo $this->session->flashdata('msg'); ?>
             <?php echo form_open_multipart(base_url('index.php/Register/auth'), array('type' => 'POST', 'data-toggle' => 'validator', 'role' => 'form')); ?>
                 <div class="form-group row">
                     <label for="Nama" class="col-sm-2 control-label col-form-label">Nama</label>
