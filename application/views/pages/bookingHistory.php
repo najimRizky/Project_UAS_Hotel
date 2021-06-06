@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,16 @@
     <title>Booking history</title>
     <?= $style  ?>
 </head>
+
 <body>
     <?= $nav ?>
     <div id="main">
-        <div class="container">
-            <?php foreach($bookings as $item){ ?>
-                <div id="filter" class="card mb-3 b<?= $item['Bintang'] ?> <?= $item['Kota'] ?> <?= $item['Harga'] ?>" style="overflow: hidden;">
-                        <div class="row">
-                            <div class="col-md-9 col-7">
-                                <div class="card-body p-2">
+        <div class="container mb-2">
+            <?php foreach ($bookings as $item) { ?>
+                <div id="" class="card mb-12" style="overflow: hidden;">
+                    <div class="row">
+                        <div class="col-md-9 col-7">
+                            <div class="card-body p-2">
                                 <div class="row">
                                     <div class="col-6">
                                         <h1>Invoice</h1>
@@ -45,13 +47,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?= base_url('index.php/User/invoice/'.$item['Id_booking']) ?>" class="btn btn-primary text-center">See invoice</a>
+                                <a href="<?= base_url('index.php/User/invoice/' . $item['Id_booking']) ?>" class="btn btn-primary text-center">See invoice</a>
                             </div>
                         </div>
                     </div>
-            <?php } ?>
+                <?php } ?>
+                </div>
         </div>
     </div>
-    <?= $footer ?>
+        <?= $footer ?>
 </body>
+
 </html>
