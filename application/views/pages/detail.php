@@ -165,7 +165,7 @@
                                         <?= $iconFacility ?>
                                     </div>
                                     <div class="col-12">
-                                        <?= $item['deskripsi'] ?>
+                                        <?= $item['Deskripsi'] ?>
                                     </div>
                                 </div>
                             </div>

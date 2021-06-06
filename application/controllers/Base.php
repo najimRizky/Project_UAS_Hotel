@@ -26,7 +26,17 @@ class Base extends CI_Controller {
 			redirect(base_url());
 		}
 		$data['hotels'] = $this->hotel->getSpesificHotel($id);
-		$data['facilities'] = $this->hotel->getFacilities($id);
+		$fasilitas = explode(",",$data['hotels'][0]['Fasilitas']);
+		$fasilitas2 = $this->hotel->getFacilities();
+		$index = 0;
+		foreach($fasilitas2 as $item){
+			if(!in_array($item['Id_fasilitas'],$fasilitas)){
+				unset($fasilitas2[$index]);
+			}
+			$index++;
+		}
+		$fasilitas2 = array_values($fasilitas2);
+		$data['facilities'] = $fasilitas2;
 
 		$data['style'] = $this->load->view('include/ui',NULL, TRUE);
         $data['nav'] = $this->load->view('components/nav',NULL, TRUE);

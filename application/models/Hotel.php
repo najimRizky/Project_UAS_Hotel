@@ -24,8 +24,9 @@ class Hotel extends CI_Model{
 		return $query->result_array();
 	}
 
-	public function getFacilities($id){
-		$query = $this->db->query("SELECT hf.Id_fasilitas, hf.Id_hotel, f.deskripsi FROM `fasilitas` AS f, hotel_fasilitas AS hf WHERE hf.Id_fasilitas = f.Id_fasilitas AND hf.Id_hotel = '$id'");
+	public function getFacilities(){
+		// $query = $this->db->query("SELECT hf.Id_fasilitas, hf.Id_hotel, f.deskripsi FROM `fasilitas` AS f, hotel_fasilitas AS hf WHERE hf.Id_fasilitas = f.Id_fasilitas AND hf.Id_hotel = '$id'");
+		$query = $this->db->query("SELECT * FROM fasilitas");
 		return $query->result_array();
 	}
 
