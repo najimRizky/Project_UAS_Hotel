@@ -14,19 +14,21 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <form class="form-inline" onSubmit="return false;">
+        <!-- <form class="form-inline" onSubmit="return false;">
           <input class="form-control mr-sm-2" id="searchBar" type="search" oninput="search()" placeholder="Search" aria-label="Search">
           <a href="" class="btn btn-outline-success my-2 my-sm-0" id="submitSearch">Search</a>
-        </form>
+        </form> -->
       </li>
       <li class="nav-item dropdown dropleft">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <?= $this->session->userdata('email') ?>
           <i class="fas fa-user-alt"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <?php if(!$this->session->userdata('email')) { ?>
             <a class="dropdown-item" href="<?= base_url('index.php/Login') ?>">Login</a>
           <?php } else { ?>
+            
             <a class="dropdown-item" href="<?= base_url('index.php/User/profile') ?>">My Profile</a>
             <a class="dropdown-item" href="<?= base_url('index.php/User/booking') ?>">Booking History</a>
             <a class="dropdown-item" href="<?= base_url('index.php/Login/logOut') ?>">Logout</a>
@@ -37,7 +39,7 @@
   </div>
 </nav>
 
-<script>
+<!-- <script>
   function search() {
     var keyword = document.getElementById('searchBar').value;
     var submitSearch = document.getElementById('submitSearch');
@@ -49,4 +51,4 @@
       document.getElementById("submitSearch").click();
     }
   });
-</script>
+</script> -->
