@@ -201,18 +201,18 @@
         if(min == 0) min = 0;
         if(max == 0) max = 0;
         
-        console.log(min+" "+max);
-        if(min<0 || max<0){
+        // console.log(min+" "+max);
+        if(parseInt(min)<0 || parseInt(max)<0){
             submitFilter.href = "#";
             document.getElementById('msg').innerHTML = "Input tidak valid";
         }
-        else if(min==0 && max==0) {
+        else if(parseInt(min)==0 && parseInt(max)==0) {
             submitFilter.href = "#";
             document.getElementById('msg').innerHTML = "";
-        }else if(min<max){
+        }else if(parseInt(min)<parseInt(max)){
             submitFilter.href = "<?= base_url('index.php/base/search/'.$keyword) ?>?minprice="+min+"&maxprice="+max;
             document.getElementById('msg').innerHTML = "";
-        }else if(min>=max){
+        }else if(parseInt(min) >= parseInt(max)){
             submitFilter.href = "#";
             document.getElementById('msg').innerHTML = "Input tidak valid";
         }
