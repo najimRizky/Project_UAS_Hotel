@@ -24,8 +24,8 @@
 
 <body>
     <?= $nav ?>
-    <div id="main" style="margin-bottom: -16px;">
-        <div class="container">
+    <div id="main" >
+        <div class="container" id="content" style="border-radius: 10px;">
             <h1>Register</h1>
             <?php echo $this->session->flashdata('msg'); ?>
             <?php echo form_open_multipart(base_url('index.php/Register/auth'), array('type' => 'POST', 'data-toggle' => 'validator', 'role' => 'form')); ?>
@@ -84,8 +84,8 @@
                 </div>
             <?php echo form_close(); ?>
         </div>
-    </div>
     <?= $footer ?>
+    </div>
 </body>
 
 </html>

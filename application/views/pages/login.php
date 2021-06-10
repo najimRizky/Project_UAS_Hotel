@@ -20,8 +20,9 @@
 
 <body>
     <?= $nav ?>
-    <div id="main">
-        <div class="container mb-2" id="content" style=" padding: 5px 200px 0px 200px; ">
+    <div id="main" >
+    <div class="" >
+        <div class="container mb-2"  style="  border-radius: 10px;"id="content" >
             <h2>Login</h2>
             <?php echo $this->session->flashdata('msg'); ?>
             <form action="<?php echo base_url('index.php/Login/auth') ?>" method="POST" class="form-horizontal">
@@ -44,13 +45,15 @@
                         <a href="javascript:void(0);" class="captcha-refresh btn btn-primary"><i class="fas fa-sync" aria-hidden="true"></i></a>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="form-group pb-4">
+                    
                     <button type="submit" name="submit" class="btn btn-primary">Login</button>
                     Don't have account?, register 
                     <a href="<?= base_url('index.php/Register') ?>" class="">Here</a>
                 </div>
                 
             </form>
+        </div>
         </div>
     <?= $footer ?>
     </div>
